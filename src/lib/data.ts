@@ -1,10 +1,30 @@
 import type { Post, User, Source, Bot } from './types';
 
 export const mockUser: User = {
+  id: 'user-1',
   name: 'Алексей',
   email: 'alexey@example.com',
-  avatar: 'https://picsum.photos/seed/avatar/40/40',
+  avatar: 'https://picsum.photos/seed/avatar-1/40/40',
+  role: 'admin',
 };
+
+const mockUsers: User[] = [
+  mockUser,
+  {
+    id: 'user-2',
+    name: 'Мария',
+    email: 'maria@example.com',
+    avatar: 'https://picsum.photos/seed/avatar-2/40/40',
+    role: 'moderator',
+  },
+  {
+    id: 'user-3',
+    name: 'Иван',
+    email: 'ivan@example.com',
+    avatar: 'https://picsum.photos/seed/avatar-3/40/40',
+    role: 'moderator',
+  },
+]
 
 const mockPosts: Post[] = [
     {
@@ -142,4 +162,11 @@ export async function getBots(): Promise<Bot[]> {
   // Simulate network delay
   await new Promise(resolve => setTimeout(resolve, 500));
   return mockBots;
+}
+
+// Mock async function to get users
+export async function getUsers(): Promise<User[]> {
+  // Simulate network delay
+  await new Promise(resolve => setTimeout(resolve, 500));
+  return mockUsers;
 }

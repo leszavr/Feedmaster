@@ -9,6 +9,7 @@
     "moderation": "Moderation",
     "sources": "Sources",
     "bots": "Bots",
+    "users": "Users",
     "settings": "Settings"
   },
   "Dashboard": {
@@ -152,6 +153,43 @@
     "deleteDialog": {
       "title": "Are you sure?",
       "description": "This will permanently delete the bot \"{name}\". This action cannot be undone.",
+      "cancelButton": "Cancel",
+      "confirmButton": "Delete"
+    }
+  },
+  "Users": {
+    "title": "Users",
+    "addButton": "Add User",
+    "noUsers": "No users configured yet.",
+    "table": {
+      "name": "Name",
+      "email": "Email",
+      "role": "Role",
+      "actions": "Actions",
+      "edit": "Edit",
+      "delete": "Delete"
+    },
+    "addDialog": {
+      "title": "Add New User",
+      "nameLabel": "Full Name",
+      "namePlaceholder": "e.g., John Doe",
+      "emailLabel": "Email Address",
+      "emailPlaceholder": "user@example.com",
+      "passwordLabel": "Password",
+      "passwordPlaceholder": "Enter a secure password",
+      "roleLabel": "Role",
+      "roleAdmin": "Administrator",
+      "roleModerator": "Moderator",
+      "submitButton": "Add User",
+      "cancelButton": "Cancel"
+    },
+    "editDialog": {
+      "title": "Edit User",
+      "submitButton": "Save Changes"
+    },
+    "deleteDialog": {
+      "title": "Are you sure?",
+      "description": "This will permanently delete the user \"{name}\". This action cannot be undone.",
       "cancelButton": "Cancel",
       "confirmButton": "Delete"
     }

@@ -26,6 +26,10 @@ export const pathnames: Pathnames<typeof locales> = {
     en: '/bots',
     ru: '/bots',
   },
+  '/users': {
+    en: '/users',
+    ru: '/users',
+  },
   '/settings': {
     en: '/settings',
     ru: '/settings',

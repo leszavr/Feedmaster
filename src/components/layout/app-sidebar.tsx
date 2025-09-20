@@ -8,6 +8,7 @@ import {
   ShieldCheck,
   Settings,
   Waves,
+  Users,
 } from "lucide-react";
 import { useTranslations } from "next-intl";
 
@@ -50,6 +51,11 @@ export function AppSidebar() {
       icon: Bot,
       label: t("bots"),
     },
+    {
+      href: "/users",
+      icon: Users,
+      label: t("users"),
+    },
   ];
 
   return (
@@ -69,7 +75,7 @@ export function AppSidebar() {
               <SidebarMenuItem key={item.href}>
                 <Link href={item.href} className="w-full">
                   <SidebarMenuButton
-                    isActive={pathname === item.href}
+                    isActive={pathname.startsWith(item.href)}
                     tooltip={item.label}
                   >
                     <item.icon />

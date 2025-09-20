@@ -9,6 +9,7 @@
     "moderation": "Модерация",
     "sources": "Источники",
     "bots": "Боты",
+    "users": "Пользователи",
     "settings": "Настройки"
   },
   "Dashboard": {
@@ -152,6 +153,43 @@
     "deleteDialog": {
       "title": "Вы уверены?",
       "description": "Это действие навсегда удалит бота \"{name}\". Отменить это действие будет невозможно.",
+      "cancelButton": "Отмена",
+      "confirmButton": "Удалить"
+    }
+  },
+  "Users": {
+    "title": "Пользователи",
+    "addButton": "Добавить пользователя",
+    "noUsers": "Пользователи еще не настроены.",
+    "table": {
+      "name": "Имя",
+      "email": "Email",
+      "role": "Роль",
+      "actions": "Действия",
+      "edit": "Редактировать",
+      "delete": "Удалить"
+    },
+    "addDialog": {
+      "title": "Добавить нового пользователя",
+      "nameLabel": "Полное имя",
+      "namePlaceholder": "Например, Иван Иванов",
+      "emailLabel": "Email адрес",
+      "emailPlaceholder": "user@example.com",
+      "passwordLabel": "Пароль",
+      "passwordPlaceholder": "Введите надежный пароль",
+      "roleLabel": "Роль",
+      "roleAdmin": "Администратор",
+      "roleModerator": "Модератор",
+      "submitButton": "Добавить пользователя",
+      "cancelButton": "Отмена"
+    },
+    "editDialog": {
+      "title": "Редактировать пользователя",
+      "submitButton": "Сохранить изменения"
+    },
+    "deleteDialog": {
+      "title": "Вы уверены?",
+      "description": "Это действие навсегда удалит пользователя \"{name}\". Отменить это действие будет невозможно.",
       "cancelButton": "Отмена",
       "confirmButton": "Удалить"
     }
