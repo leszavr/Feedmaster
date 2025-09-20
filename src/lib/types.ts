@@ -12,6 +12,9 @@ export type Source = {
   type: 'RSS' | 'Telegram' | 'Web';
   url: string;
   keywords: string;
+  filterLogic?: 'AND' | 'OR';
+  blacklist?: string;
+  fetchInterval?: number; // in minutes
   status: 'active' | 'paused';
   lastRun: Date;
 };
