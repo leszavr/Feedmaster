@@ -15,17 +15,15 @@ import {
 } from "@/components/ui/chart";
 import { useTranslations } from "next-intl";
 
-const chartData = [
-  { date: "2024-07-15", approved: 86, rejected: 45 },
-  { date: "2024-07-16", approved: 102, rejected: 30 },
-  { date: "2024-07-17", approved: 95, rejected: 25 },
-  { date: "2024-07-18", approved: 110, rejected: 35 },
-  { date: "2024-07-19", approved: 78, rejected: 18 },
-  { date: "2024-07-20", approved: 123, rejected: 40 },
-  { date: "2024-07-21", approved: 130, rejected: 22 },
-];
+type PostsChartProps = {
+  data: {
+    date: string;
+    approved: number;
+    rejected: number;
+  }[];
+};
 
-export function PostsChart() {
+export function PostsChart({ data }: PostsChartProps) {
   const t = useTranslations("Dashboard.chart");
 
   const chartConfig = {
@@ -48,7 +46,7 @@ export function PostsChart() {
       <CardContent>
         <ChartContainer config={chartConfig} className="h-80 w-full">
           <ResponsiveContainer>
-            <BarChart data={chartData} margin={{ top: 20 }}>
+            <BarChart data={data} margin={{ top: 20 }}>
               <XAxis
                 dataKey="date"
                 tickLine={false}
