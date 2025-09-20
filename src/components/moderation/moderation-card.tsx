@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState } from "react";
@@ -15,6 +16,12 @@ import {
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 import { ThumbsUp, ThumbsDown, Sparkles, LoaderCircle, ExternalLink } from "lucide-react";
 import Link from "next/link";
 import { Skeleton } from "../ui/skeleton";
@@ -112,19 +119,43 @@ export function ModerationCard({ post }: ModerationCardProps) {
         </div>
       </CardContent>
       <CardFooter className="flex justify-between">
-        <Button variant="outline" onClick={handleSummarize} disabled={isSummarizing || !!isUpdating}>
-          {isSummarizing ? <LoaderCircle className="animate-spin" /> : <Sparkles />}
-          {t("summarizeButton")}
-        </Button>
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button variant="outline" size="icon" onClick={handleSummarize} disabled={isSummarizing || !!isUpdating}>
+                  {isSummarizing ? <LoaderCircle className="animate-spin" /> : <Sparkles />}
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>{t("summarizeButton")}</p>
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
         <div className="flex gap-2">
-          <Button variant="destructive" onClick={() => handleStatusUpdate('rejected')} disabled={!!isUpdating}>
-            {isUpdating === 'rejected' ? <LoaderCircle className="animate-spin" /> : <ThumbsDown />}
-             {t("rejectButton")}
-          </Button>
-          <Button onClick={() => handleStatusUpdate('approved')} disabled={!!isUpdating}>
-            {isUpdating === 'approved' ? <LoaderCircle className="animate-spin" /> : <ThumbsUp />}
-            {t("approveButton")}
-          </Button>
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button variant="destructive" size="icon" onClick={() => handleStatusUpdate('rejected')} disabled={!!isUpdating}>
+                  {isUpdating === 'rejected' ? <LoaderCircle className="animate-spin" /> : <ThumbsDown />}
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>{t("rejectButton")}</p>
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button size="icon" onClick={() => handleStatusUpdate('approved')} disabled={!!isUpdating}>
+                  {isUpdating === 'approved' ? <LoaderCircle className="animate-spin" /> : <ThumbsUp />}
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>{t("approveButton")}</p>
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
         </div>
       </CardFooter>
     </Card>
