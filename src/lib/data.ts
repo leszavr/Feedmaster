@@ -1,4 +1,4 @@
-import type { Post, User } from './types';
+import type { Post, User, Source } from './types';
 
 export const mockUser: User = {
   name: 'Алексей',
@@ -59,9 +59,47 @@ const mockPosts: Post[] = [
     },
   ];
 
+const mockSources: Source[] = [
+  {
+    id: 'source-1',
+    name: 'Habr',
+    type: 'RSS',
+    url: 'https://habr.com/ru/rss/hubs/all/',
+    keywords: 'ai, next.js, react',
+    status: 'active',
+    lastRun: new Date(Date.now() - 10 * 60 * 1000), // 10 minutes ago
+  },
+  {
+    id: 'source-2',
+    name: 'Next.js Blog',
+    type: 'RSS',
+    url: 'https://nextjs.org/feed.xml',
+    keywords: 'nextjs, release',
+    status: 'active',
+    lastRun: new Date(Date.now() - 30 * 60 * 1000), // 30 minutes ago
+  },
+  {
+    id: 'source-3',
+    name: 'Pavel Durov',
+    type: 'Telegram',
+    url: 'https://t.me/s/durov',
+    keywords: 'telegram, feature',
+    status: 'paused',
+    lastRun: new Date(Date.now() - 24 * 60 * 60 * 1000), // 1 day ago
+  },
+];
+
+
 // Mock async function to get posts
 export async function getPosts(): Promise<Post[]> {
     // Simulate network delay
     await new Promise(resolve => setTimeout(resolve, 500));
     return mockPosts;
+}
+
+// Mock async function to get sources
+export async function getSources(): Promise<Source[]> {
+  // Simulate network delay
+  await new Promise(resolve => setTimeout(resolve, 500));
+  return mockSources;
 }
