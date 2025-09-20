@@ -1,10 +1,10 @@
 import { PageHeader } from "@/components/page-header";
 import { ModerationCard } from "@/components/moderation/moderation-card";
 import { getPosts } from "@/lib/data";
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 
 export default async function ModerationPage() {
-  const t = useTranslations("Moderation");
+  const t = await getTranslations("Moderation");
   const posts = await getPosts();
   const pendingPosts = posts.filter((post) => post.status === "pending");
 
