@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { getSummary, updatePostStatus } from "@/app/actions";
 import type { Post } from "@/lib/types";
@@ -37,6 +37,11 @@ export function ModerationCard({ post }: ModerationCardProps) {
   const [summary, setSummary] = useState<string | null>(post.summary || null);
   const [isSummarizing, setIsSummarizing] = useState(false);
   const [isUpdating, setIsUpdating] = useState<"approved" | "rejected" | null>(null);
+  const [formattedTime, setFormattedTime] = useState("...");
+
+  useEffect(() => {
+    setFormattedTime(new Date(post.fetchedAt).toLocaleTimeString());
+  }, [post.fetchedAt]);
 
   const handleSummarize = async () => {
     setIsSummarizing(true);
@@ -87,7 +92,7 @@ export function ModerationCard({ post }: ModerationCardProps) {
               </Link>
             </CardDescription>
           </div>
-          <Badge variant="secondary">{new Date(post.fetchedAt).toLocaleTimeString()}</Badge>
+          <Badge variant="secondary">{formattedTime}</Badge>
         </div>
       </CardHeader>
       <CardContent className="space-y-4">
