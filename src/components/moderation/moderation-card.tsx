@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { toast } from "@/hooks/use-toast";
+import { useToast } from "@/hooks/use-toast";
 import { getSummary, updatePostStatus } from "@/app/actions";
 import type { Post } from "@/lib/types";
 import {
@@ -18,12 +18,15 @@ import { Separator } from "@/components/ui/separator";
 import { ThumbsUp, ThumbsDown, Sparkles, LoaderCircle, ExternalLink } from "lucide-react";
 import Link from "next/link";
 import { Skeleton } from "../ui/skeleton";
+import { useTranslations } from "next-intl";
 
 type ModerationCardProps = {
   post: Post;
 };
 
 export function ModerationCard({ post }: ModerationCardProps) {
+  const t = useTranslations("Moderation.card");
+  const { toast } = useToast();
   const [summary, setSummary] = useState<string | null>(post.summary || null);
   const [isSummarizing, setIsSummarizing] = useState(false);
   const [isUpdating, setIsUpdating] = useState<"approved" | "rejected" | null>(null);
@@ -35,8 +38,8 @@ export function ModerationCard({ post }: ModerationCardProps) {
       setSummary(result);
     } catch (error) {
       toast({
-        title: "Error",
-        description: "Could not generate summary.",
+        title: t("toast.summarizeError.title"),
+        description: t("toast.summarizeError.description"),
         variant: "destructive",
       });
     } finally {
@@ -49,13 +52,13 @@ export function ModerationCard({ post }: ModerationCardProps) {
     const result = await updatePostStatus(post.id, status);
     if(result.success) {
       toast({
-        title: "Success",
+        title: t("toast.updateSuccess.title"),
         description: result.message,
       });
     } else {
         toast({
-            title: "Error",
-            description: "Could not update post status.",
+            title: t("toast.updateError.title"),
+            description: t("toast.updateError.description"),
             variant: "destructive",
         });
     }
@@ -71,7 +74,7 @@ export function ModerationCard({ post }: ModerationCardProps) {
           <div>
             <CardTitle className="mb-1">{post.title}</CardTitle>
             <CardDescription className="flex items-center gap-2">
-              From {post.source.name} ({post.source.type})
+              {t("source", { name: post.source.name, type: post.source.type })}
               <Link href={post.link} target="_blank">
                 <ExternalLink className="h-4 w-4 text-muted-foreground hover:text-primary"/>
               </Link>
@@ -86,7 +89,7 @@ export function ModerationCard({ post }: ModerationCardProps) {
           <div className="p-4 bg-muted/50 rounded-lg space-y-2 border">
             <div className="flex items-center gap-2">
               <Sparkles className="h-5 w-5 text-primary" />
-              <h4 className="font-semibold">AI Summary</h4>
+              <h4 className="font-semibold">{t("summaryTitle")}</h4>
             </div>
             {isSummarizing ? (
               <div className="space-y-2">
@@ -111,16 +114,16 @@ export function ModerationCard({ post }: ModerationCardProps) {
       <CardFooter className="flex justify-between">
         <Button variant="outline" onClick={handleSummarize} disabled={isSummarizing || !!isUpdating}>
           {isSummarizing ? <LoaderCircle className="animate-spin" /> : <Sparkles />}
-          Summarize with AI
+          {t("summarizeButton")}
         </Button>
         <div className="flex gap-2">
           <Button variant="destructive" onClick={() => handleStatusUpdate('rejected')} disabled={!!isUpdating}>
             {isUpdating === 'rejected' ? <LoaderCircle className="animate-spin" /> : <ThumbsDown />}
-             Reject
+             {t("rejectButton")}
           </Button>
           <Button onClick={() => handleStatusUpdate('approved')} disabled={!!isUpdating}>
             {isUpdating === 'approved' ? <LoaderCircle className="animate-spin" /> : <ThumbsUp />}
-            Approve
+            {t("approveButton")}
           </Button>
         </div>
       </CardFooter>

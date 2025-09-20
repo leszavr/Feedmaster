@@ -39,5 +39,29 @@
         "paused_bot": "paused bot"
       }
     }
+  },
+  "Moderation": {
+    "title": "Pending Moderation",
+    "noPosts": "No posts are currently pending moderation.",
+    "card": {
+      "source": "From {name} ({type})",
+      "summaryTitle": "AI Summary",
+      "summarizeButton": "Summarize with AI",
+      "rejectButton": "Reject",
+      "approveButton": "Approve",
+      "toast": {
+        "summarizeError": {
+          "title": "Error",
+          "description": "Could not generate summary."
+        },
+        "updateSuccess": {
+          "title": "Success"
+        },
+        "updateError": {
+          "title": "Error",
+          "description": "Could not update post status."
+        }
+      }
+    }
   }
 }

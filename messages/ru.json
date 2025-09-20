@@ -39,5 +39,29 @@
         "paused_bot": "приостановил бота"
       }
     }
+  },
+  "Moderation": {
+    "title": "Ожидают модерации",
+    "noPosts": "В настоящее время нет постов, ожидающих модерации.",
+    "card": {
+      "source": "Из {name} ({type})",
+      "summaryTitle": "AI Краткое содержание",
+      "summarizeButton": "Суммировать с AI",
+      "rejectButton": "Отклонить",
+      "approveButton": "Одобрить",
+      "toast": {
+        "summarizeError": {
+          "title": "Ошибка",
+          "description": "Не удалось сгенерировать краткое содержание."
+        },
+        "updateSuccess": {
+          "title": "Успех"
+        },
+        "updateError": {
+          "title": "Ошибка",
+          "description": "Не удалось обновить статус поста."
+        }
+      }
+    }
   }
 }

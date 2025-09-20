@@ -1,7 +1,7 @@
 import type { Post, User } from './types';
 
 export const mockUser: User = {
-  name: 'Alexey',
+  name: 'Алексей',
   email: 'alexey@example.com',
   avatar: 'https://picsum.photos/seed/avatar/40/40',
 };
@@ -9,51 +9,51 @@ export const mockUser: User = {
 const mockPosts: Post[] = [
     {
       id: 'post-1',
-      title: 'Next.js 15 is here!',
-      content: 'The latest version of Next.js comes with a lot of new features, including improved performance, better image optimization, and more. Check out the official blog post to learn all about it.',
+      title: 'Вышел Next.js 15!',
+      content: 'Последняя версия Next.js содержит множество новых функций, включая улучшенную производительность, оптимизацию изображений и многое другое. Ознакомьтесь с официальным сообщением в блоге, чтобы узнать все подробности.',
       link: 'https://nextjs.org/blog',
-      source: { name: 'Next.js Blog', type: 'RSS' },
-      fetchedAt: new Date(Date.now() - 5 * 60 * 1000), // 5 minutes ago
+      source: { name: 'Блог Next.js', type: 'RSS' },
+      fetchedAt: new Date(Date.now() - 5 * 60 * 1000), // 5 минут назад
       status: 'pending',
       keywords: ['nextjs', 'react', 'webdev'],
     },
     {
       id: 'post-2',
-      title: 'The Future of AI in Web Development',
-      content: 'Artificial intelligence is rapidly changing the landscape of web development. From AI-powered code assistants to automated testing, the possibilities are endless. This article explores the potential impact of AI on the industry.',
+      title: 'Будущее ИИ в веб-разработке',
+      content: 'Искусственный интеллект быстро меняет ландшафт веб-разработки. От ИИ-ассистентов по кодированию до автоматизированного тестирования — возможности безграничны. В этой статье рассматривается потенциальное влияние ИИ на отрасль.',
       link: 'https://example.com/ai-in-web-dev',
       source: { name: 'Tech Weekly', type: 'Web' },
-      fetchedAt: new Date(Date.now() - 15 * 60 * 1000), // 15 minutes ago
+      fetchedAt: new Date(Date.now() - 15 * 60 * 1000), // 15 минут назад
       status: 'pending',
-      keywords: ['ai', 'machine-learning', 'development'],
+      keywords: ['ии', 'машинное-обучение', 'разработка'],
     },
     {
       id: 'post-3',
-      title: 'A Deep Dive into Telegram Bots',
-      content: 'Telegram bots can do more than just send messages. With the Bot API, you can create powerful applications that integrate with external services, process payments, and much more.',
+      title: 'Глубокое погружение в ботов Telegram',
+      content: 'Боты Telegram могут делать больше, чем просто отправлять сообщения. С помощью Bot API вы можете создавать мощные приложения, которые интегрируются с внешними сервисами, обрабатывают платежи и многое другое.',
       link: 'https://core.telegram.org/bots',
-      source: { name: 'Telegram Docs', type: 'Telegram' },
-      fetchedAt: new Date(Date.now() - 30 * 60 * 1000), // 30 minutes ago
+      source: { name: 'Документация Telegram', type: 'Telegram' },
+      fetchedAt: new Date(Date.now() - 30 * 60 * 1000), // 30 минут назад
       status: 'approved',
       keywords: ['telegram', 'bots', 'api'],
     },
     {
       id: 'post-4',
-      title: 'Spammy McSpamface Article',
-      content: 'This is a low-quality article with a lot of spammy keywords and clickbait. It should definitely be rejected.',
+      title: 'Статья от Спамми МакСпамфейса',
+      content: 'Это низкокачественная статья с большим количеством спам-ключевых слов и кликбейта. Ее определенно следует отклонить.',
       link: 'https://spam.com/spam',
       source: { name: 'Spam Central', type: 'RSS' },
-      fetchedAt: new Date(Date.now() - 45 * 60 * 1000), // 45 minutes ago
+      fetchedAt: new Date(Date.now() - 45 * 60 * 1000), // 45 минут назад
       status: 'rejected',
-      keywords: ['spam', 'clickbait'],
+      keywords: ['спам', 'кликбейт'],
     },
     {
       id: 'post-5',
-      title: 'How to Build a Scalable Application with FastAPI',
-      content: 'FastAPI is a modern, fast (high-performance) web framework for building APIs with Python 3.7+ based on standard Python type hints.',
+      title: 'Как создать масштабируемое приложение с помощью FastAPI',
+      content: 'FastAPI — это современный, быстрый (высокопроизводительный) веб-фреймворк для создания API на Python 3.7+ на основе стандартных подсказок типов Python.',
       link: 'https://fastapi.tiangolo.com/',
-      source: { name: 'FastAPI Docs', type: 'Web' },
-      fetchedAt: new Date(Date.now() - 60 * 60 * 1000), // 1 hour ago
+      source: { name: 'Документация FastAPI', type: 'Web' },
+      fetchedAt: new Date(Date.now() - 60 * 60 * 1000), // 1 час назад
       status: 'pending',
       keywords: ['fastapi', 'python', 'backend'],
     },
