@@ -63,5 +63,15 @@
         }
       }
     }
+  },
+  "Sources": {
+    "title": "Sources",
+    "addButton": "Add Source",
+    "noSources": "No sources configured yet."
+  },
+  "Bots": {
+    "title": "Bots",
+    "addButton": "Add Bot",
+    "noBots": "No bots configured yet."
   }
 }
