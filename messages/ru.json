@@ -4,6 +4,17 @@
     "title": "Добро пожаловать",
     "subtitle": "Это новый старт."
   },
+  "LoginPage": {
+    "title": "С возвращением!",
+    "description": "Введите свои данные для входа в аккаунт.",
+    "emailLabel": "Email",
+    "emailPlaceholder": "ваш@email.com",
+    "passwordLabel": "Пароль",
+    "passwordPlaceholder": "••••••••",
+    "loginButton": "Войти",
+    "loginSuccess": "Вход выполнен успешно! Перенаправление...",
+    "loginError": "Неверные данные. Пожалуйста, попробуйте еще раз."
+  },
   "Sidebar": {
     "dashboard": "Панель",
     "moderation": "Модерация",

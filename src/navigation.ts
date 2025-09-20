@@ -10,6 +10,10 @@ export const localePrefix = 'as-needed';
 // and external paths, separated by locale.
 export const pathnames: Pathnames<typeof locales> = {
   '/': '/',
+  '/login': {
+    en: '/login',
+    ru: '/login',
+  },
   '/dashboard': {
     en: '/dashboard',
     ru: '/dashboard',
