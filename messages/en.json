@@ -9,5 +9,35 @@
     "sources": "Sources",
     "bots": "Bots",
     "settings": "Settings"
+  },
+  "Dashboard": {
+    "title": "Dashboard",
+    "stats": {
+      "moderated": "Posts Moderated",
+      "moderated_change": "+15.2% from last month",
+      "approval_rate": "Approval Rate",
+      "approval_rate_change": "+2.1% from last month",
+      "active_sources": "Active Sources",
+      "active_sources_change": "+2 since last week",
+      "active_bots": "Active Bots",
+      "active_bots_change": "No change"
+    },
+    "chart": {
+      "title": "Moderation Activity",
+      "description": "Approved vs. Rejected Posts (Last 7 Days)",
+      "approved": "Approved",
+      "rejected": "Rejected"
+    },
+    "activity": {
+      "title": "Recent Activity",
+      "description": "A log of recent system and user actions.",
+      "actions": {
+        "approved": "approved",
+        "rejected": "rejected",
+        "fetched": "fetched",
+        "added_source": "added source",
+        "paused_bot": "paused bot"
+      }
+    }
   }
 }

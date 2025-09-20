@@ -7,6 +7,7 @@ import {
 } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
+import { useTranslations } from "next-intl";
 
 const activities = [
   {
@@ -29,24 +30,26 @@ const activities = [
   },
   {
     user: "Admin",
-    action: "added source",
+    action: "added_source",
     post: "Hacker News",
     time: "3h ago",
   },
   {
     user: "Admin",
-    action: "paused bot",
+    action: "paused_bot",
     post: "Marketing Bot",
     time: "yesterday",
   },
 ];
 
 export function RecentActivities() {
+  const t = useTranslations("Dashboard.activity");
+
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Recent Activity</CardTitle>
-        <CardDescription>A log of recent system and user actions.</CardDescription>
+        <CardTitle>{t("title")}</CardTitle>
+        <CardDescription>{t("description")}</CardDescription>
       </CardHeader>
       <CardContent>
         <div className="space-y-6">
@@ -69,7 +72,7 @@ export function RecentActivities() {
                     }
                     className="ml-1"
                   >
-                    {activity.action}
+                    {t(`actions.${activity.action}`)}
                   </Badge>
                 </p>
                 <p className="text-sm text-muted-foreground">{activity.post}</p>

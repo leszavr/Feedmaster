@@ -68,7 +68,7 @@ export function AppSidebar() {
           <SidebarMenu>
             {menuItems.map((item) => (
               <SidebarMenuItem key={item.href}>
-                <Link href={item.href} legacyBehavior passHref>
+                <Link href={item.href} passHref>
                   <SidebarMenuButton
                     isActive={pathname.endsWith(item.href)}
                     tooltip={item.label}
@@ -100,7 +100,7 @@ export function AppSidebar() {
                 {mockUser.email}
               </p>
             </div>
-            <Link href="/settings" passHref legacyBehavior>
+            <Link href="/settings">
                 <SidebarMenuButton
                   variant="ghost"
                   className="ml-auto"

@@ -9,5 +9,35 @@
     "sources": "Источники",
     "bots": "Боты",
     "settings": "Настройки"
+  },
+  "Dashboard": {
+    "title": "Панель управления",
+    "stats": {
+      "moderated": "Постов отмодерировано",
+      "moderated_change": "+15.2% за последний месяц",
+      "approval_rate": "Рейтинг одобрения",
+      "approval_rate_change": "+2.1% за последний месяц",
+      "active_sources": "Активных источников",
+      "active_sources_change": "+2 за последнюю неделю",
+      "active_bots": "Активных ботов",
+      "active_bots_change": "Без изменений"
+    },
+    "chart": {
+      "title": "Активность модерации",
+      "description": "Одобренные и отклоненные посты (за 7 дней)",
+      "approved": "Одобрено",
+      "rejected": "Отклонено"
+    },
+    "activity": {
+      "title": "Последние действия",
+      "description": "Журнал последних действий системы и пользователей.",
+      "actions": {
+        "approved": "одобрил",
+        "rejected": "отклонил",
+        "fetched": "получил",
+        "added_source": "добавил источник",
+        "paused_bot": "приостановил бота"
+      }
+    }
   }
 }

@@ -5,32 +5,34 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { ShieldCheck, Percent, Rss, Bot } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 export function StatsCards() {
+  const t = useTranslations("Dashboard.stats");
   const stats = [
     {
-      title: "Posts Moderated",
+      title: t("moderated"),
       value: "1,250",
       icon: ShieldCheck,
-      change: "+15.2% from last month",
+      change: t("moderated_change"),
     },
     {
-      title: "Approval Rate",
+      title: t("approval_rate"),
       value: "89.5%",
       icon: Percent,
-      change: "+2.1% from last month",
+      change: t("approval_rate_change"),
     },
     {
-      title: "Active Sources",
+      title: t("active_sources"),
       value: "12",
       icon: Rss,
-      change: "+2 since last week",
+      change: t("active_sources_change"),
     },
     {
-      title: "Active Bots",
+      title: t("active_bots"),
       value: "3",
       icon: Bot,
-      change: "No change",
+      change: t("active_bots_change"),
     },
   ];
 

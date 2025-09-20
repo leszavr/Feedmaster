@@ -13,6 +13,7 @@ import {
   ChartTooltipContent,
   ChartContainer,
 } from "@/components/ui/chart";
+import { useTranslations } from "next-intl";
 
 const chartData = [
   { date: "2024-07-15", approved: 86, rejected: 45 },
@@ -24,23 +25,25 @@ const chartData = [
   { date: "2024-07-21", approved: 130, rejected: 22 },
 ];
 
-const chartConfig = {
-  approved: {
-    label: "Approved",
-    color: "hsl(var(--chart-1))",
-  },
-  rejected: {
-    label: "Rejected",
-    color: "hsl(var(--destructive))",
-  },
-};
-
 export function PostsChart() {
+  const t = useTranslations("Dashboard.chart");
+
+  const chartConfig = {
+    approved: {
+      label: t("approved"),
+      color: "hsl(var(--chart-1))",
+    },
+    rejected: {
+      label: t("rejected"),
+      color: "hsl(var(--destructive))",
+    },
+  };
+
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Moderation Activity</CardTitle>
-        <CardDescription>Approved vs. Rejected Posts (Last 7 Days)</CardDescription>
+        <CardTitle>{t("title")}</CardTitle>
+        <CardDescription>{t("description")}</CardDescription>
       </CardHeader>
       <CardContent>
         <ChartContainer config={chartConfig} className="h-80 w-full">
