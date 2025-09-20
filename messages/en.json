@@ -73,7 +73,10 @@
       "name": "Name",
       "type": "Type",
       "status": "Status",
-      "url": "URL"
+      "url": "URL",
+      "actions": "Actions",
+      "edit": "Edit",
+      "delete": "Delete"
     },
     "addDialog": {
       "title": "Add New Source",
@@ -103,6 +106,16 @@
       "interval6hours": "Every 6 hours",
       "submitButton": "Add Source",
       "cancelButton": "Cancel"
+    },
+    "editDialog": {
+      "title": "Edit Source",
+      "submitButton": "Save Changes"
+    },
+    "deleteDialog": {
+      "title": "Are you sure?",
+      "description": "This will permanently delete the source \"{name}\". This action cannot be undone.",
+      "cancelButton": "Cancel",
+      "confirmButton": "Delete"
     }
   },
   "Bots": {

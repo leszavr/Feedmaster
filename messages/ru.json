@@ -73,7 +73,10 @@
       "name": "Название",
       "type": "Тип",
       "status": "Статус",
-      "url": "URL"
+      "url": "URL",
+      "actions": "Действия",
+      "edit": "Редактировать",
+      "delete": "Удалить"
     },
     "addDialog": {
       "title": "Добавить новый источник",
@@ -103,6 +106,16 @@
       "interval6hours": "Каждые 6 часов",
       "submitButton": "Добавить источник",
       "cancelButton": "Отмена"
+    },
+    "editDialog": {
+      "title": "Редактировать источник",
+      "submitButton": "Сохранить изменения"
+    },
+    "deleteDialog": {
+      "title": "Вы уверены?",
+      "description": "Это действие навсегда удалит источник \"{name}\". Отменить это действие будет невозможно.",
+      "cancelButton": "Отмена",
+      "confirmButton": "Удалить"
     }
   },
   "Bots": {

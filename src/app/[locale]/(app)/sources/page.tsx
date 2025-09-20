@@ -14,19 +14,30 @@ import {
   DialogContent,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from "@/components/ui/dialog";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
 import type { Source } from "@/lib/types";
 import { z } from "zod";
 import { addSourceFormSchema } from "@/components/sources/add-source-form";
 
 export default function SourcesPage() {
   const t = useTranslations("Sources");
-  const [sources, setSources] = useState<Source[]>([]);
-  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const tDialog = useTranslations("Sources.addDialog");
 
-  // Note: In a real app, this would be a server-side fetch.
-  // We're using a client-side effect to simulate data loading for now.
+  const [sources, setSources] = useState<Source[]>([]);
+  const [isAddDialogOpen, setIsAddDialogOpen] = useState(false);
+  const [editingSource, setEditingSource] = useState<Source | null>(null);
+  const [deletingSource, setDeletingSource] = useState<Source | null>(null);
+
   useState(() => {
     async function loadSources() {
       const fetchedSources = await getSources();
@@ -35,24 +46,55 @@ export default function SourcesPage() {
     loadSources();
   });
 
-  const handleSourceAdded = (newSourceData: z.infer<typeof addSourceFormSchema>) => {
+  const handleAddSource = (newSourceData: z.infer<typeof addSourceFormSchema>) => {
     const sourceToAdd: Source = {
       ...newSourceData,
       id: `source-${sources.length + 1}`,
-      status: 'active',
+      status: "active",
       lastRun: new Date(),
-      keywords: newSourceData.keywords || '',
-      blacklist: newSourceData.blacklist || '',
+      keywords: newSourceData.keywords || "",
+      blacklist: newSourceData.blacklist || "",
+    };
+    setSources((prev) => [...prev, sourceToAdd]);
+    setIsAddDialogOpen(false);
+  };
+
+  const handleEditSource = (
+    updatedSourceData: z.infer<typeof addSourceFormSchema>
+  ) => {
+    if (!editingSource) return;
+    setSources((prev) =>
+      prev.map((s) =>
+        s.id === editingSource.id ? { ...s, ...updatedSourceData } : s
+      )
+    );
+    setEditingSource(null);
+  };
+
+  const handleDeleteSource = () => {
+    if (!deletingSource) return;
+    setSources((prev) => prev.filter((s) => s.id !== deletingSource.id));
+    setDeletingSource(null);
+  };
+
+  const isEditDialogOpen = !!editingSource;
+  const onEditOpenChange = (open: boolean) => {
+    if (!open) {
+      setEditingSource(null);
     }
-    console.log("New source added (mock):", sourceToAdd);
-    setSources(prev => [...prev, sourceToAdd]);
-    setIsDialogOpen(false);
+  }
+
+  const isDeleteDialogOpen = !!deletingSource;
+  const onDeleteOpenChange = (open: boolean) => {
+    if (!open) {
+      setDeletingSource(null);
+    }
   }
 
   return (
     <div className="flex flex-col gap-6">
       <PageHeader title={t("title")}>
-        <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+        <Dialog open={isAddDialogOpen} onOpenChange={setIsAddDialogOpen}>
           <DialogTrigger asChild>
             <Button>
               <PlusCircle />
@@ -63,12 +105,52 @@ export default function SourcesPage() {
             <DialogHeader>
               <DialogTitle>{t("addDialog.title")}</DialogTitle>
             </DialogHeader>
-            <AddSourceForm onFormSubmit={handleSourceAdded} />
+            <AddSourceForm onFormSubmit={handleAddSource} />
           </DialogContent>
         </Dialog>
       </PageHeader>
       {sources.length > 0 ? (
-        <SourcesTable sources={sources} />
+        <>
+          <SourcesTable
+            sources={sources}
+            onEdit={setEditingSource}
+            onDelete={setDeletingSource}
+          />
+          {/* Edit Dialog */}
+          <Dialog open={isEditDialogOpen} onOpenChange={onEditOpenChange}>
+            <DialogContent className="sm:max-w-[480px]">
+              <DialogHeader>
+                <DialogTitle>{t("editDialog.title")}</DialogTitle>
+              </DialogHeader>
+              {editingSource && (
+                <AddSourceForm
+                  onFormSubmit={handleEditSource}
+                  defaultValues={editingSource}
+                  submitButtonText={t("editDialog.submitButton")}
+                />
+              )}
+            </DialogContent>
+          </Dialog>
+          {/* Delete Confirmation Dialog */}
+          <AlertDialog open={isDeleteDialogOpen} onOpenChange={onDeleteOpenChange}>
+            <AlertDialogContent>
+              <AlertDialogHeader>
+                <AlertDialogTitle>{t("deleteDialog.title")}</AlertDialogTitle>
+                <AlertDialogDescription>
+                  {t("deleteDialog.description", { name: deletingSource?.name })}
+                </AlertDialogDescription>
+              </AlertDialogHeader>
+              <AlertDialogFooter>
+                <AlertDialogCancel onClick={() => setDeletingSource(null)}>
+                  {t("deleteDialog.cancelButton")}
+                </AlertDialogCancel>
+                <AlertDialogAction onClick={handleDeleteSource}>
+                  {t("deleteDialog.confirmButton")}
+                </AlertDialogAction>
+              </AlertDialogFooter>
+            </AlertDialogContent>
+          </AlertDialog>
+        </>
       ) : (
         <div className="flex items-center justify-center rounded-lg border border-dashed p-12 text-center">
           <p className="text-muted-foreground">{t("noSources")}</p>

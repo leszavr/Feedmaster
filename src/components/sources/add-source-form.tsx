@@ -32,18 +32,20 @@ export const addSourceFormSchema = z.object({
   keywords: z.string().optional(),
   filterLogic: z.enum(["AND", "OR"]).default("OR"),
   blacklist: z.string().optional(),
-  fetchInterval: z.coerce.number().min(1).default(60),
+  fetchInterval: z.coerce.number().min(1),
 });
 
 type AddSourceFormProps = {
   onFormSubmit: (data: z.infer<typeof addSourceFormSchema>) => void;
+  defaultValues?: Partial<z.infer<typeof addSourceFormSchema>>;
+  submitButtonText?: string;
 };
 
-export function AddSourceForm({ onFormSubmit }: AddSourceFormProps) {
+export function AddSourceForm({ onFormSubmit, defaultValues, submitButtonText }: AddSourceFormProps) {
   const t = useTranslations("Sources.addDialog");
   const form = useForm<z.infer<typeof addSourceFormSchema>>({
     resolver: zodResolver(addSourceFormSchema),
-    defaultValues: {
+    defaultValues: defaultValues || {
       name: "",
       url: "",
       keywords: "",
@@ -195,7 +197,7 @@ export function AddSourceForm({ onFormSubmit }: AddSourceFormProps) {
           )}
         />
         <div className="flex justify-end gap-2 pt-4">
-          <Button type="submit">{t("submitButton")}</Button>
+          <Button type="submit">{submitButtonText || t("submitButton")}</Button>
         </div>
       </form>
     </Form>
