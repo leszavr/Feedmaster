@@ -193,5 +193,37 @@
       "cancelButton": "Cancel",
       "confirmButton": "Delete"
     }
+  },
+  "Settings": {
+    "title": "Settings",
+    "profile": {
+      "title": "Profile",
+      "description": "Update your personal information.",
+      "nameLabel": "Full Name",
+      "namePlaceholder": "e.g., John Doe",
+      "emailLabel": "Email Address",
+      "emailPlaceholder": "user@example.com",
+      "submitButton": "Save Changes",
+      "toast": {
+        "success": {
+          "title": "Profile Updated",
+          "description": "Your profile information has been successfully updated."
+        }
+      }
+    },
+    "password": {
+      "title": "Change Password",
+      "description": "Update your account password.",
+      "currentPasswordLabel": "Current Password",
+      "newPasswordLabel": "New Password",
+      "confirmPasswordLabel": "Confirm New Password",
+      "submitButton": "Change Password",
+      "toast": {
+        "success": {
+          "title": "Password Updated",
+          "description": "Your password has been successfully changed."
+        }
+      }
+    }
   }
 }

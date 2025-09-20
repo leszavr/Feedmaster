@@ -193,5 +193,37 @@
       "cancelButton": "Отмена",
       "confirmButton": "Удалить"
     }
+  },
+  "Settings": {
+    "title": "Настройки",
+    "profile": {
+      "title": "Профиль",
+      "description": "Обновите вашу личную информацию.",
+      "nameLabel": "Полное имя",
+      "namePlaceholder": "Например, Иван Иванов",
+      "emailLabel": "Email адрес",
+      "emailPlaceholder": "user@example.com",
+      "submitButton": "Сохранить изменения",
+      "toast": {
+        "success": {
+          "title": "Профиль обновлен",
+          "description": "Ваша информация профиля была успешно обновлена."
+        }
+      }
+    },
+    "password": {
+      "title": "Сменить пароль",
+      "description": "Обновите пароль вашей учетной записи.",
+      "currentPasswordLabel": "Текущий пароль",
+      "newPasswordLabel": "Новый пароль",
+      "confirmPasswordLabel": "Подтвердите новый пароль",
+      "submitButton": "Сменить пароль",
+      "toast": {
+        "success": {
+          "title": "Пароль обновлен",
+          "description": "Ваш пароль был успешно изменен."
+        }
+      }
+    }
   }
 }
