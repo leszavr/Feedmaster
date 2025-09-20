@@ -60,7 +60,7 @@ export function RecentActivities() {
                 <AvatarFallback>{activity.user.charAt(0)}</AvatarFallback>
               </Avatar>
               <div className="grid gap-1">
-                <p className="text-sm font-medium leading-none">
+                <div className="text-sm font-medium leading-none">
                   <span className="font-semibold">{activity.user}</span>{" "}
                   <Badge
                     variant={
@@ -74,7 +74,7 @@ export function RecentActivities() {
                   >
                     {t(`actions.${activity.action}`)}
                   </Badge>
-                </p>
+                </div>
                 <p className="text-sm text-muted-foreground">{activity.post}</p>
               </div>
               <div className="ml-auto text-sm text-muted-foreground">
