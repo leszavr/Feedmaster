@@ -25,7 +25,7 @@ import {
 } from "@/components/ui/select";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 
-const formSchema = z.object({
+export const addSourceFormSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters."),
   type: z.enum(["RSS", "Telegram", "Web"]),
   url: z.string().url("Please enter a valid URL."),
@@ -36,13 +36,13 @@ const formSchema = z.object({
 });
 
 type AddSourceFormProps = {
-  onFormSubmit: (data: z.infer<typeof formSchema>) => void;
+  onFormSubmit: (data: z.infer<typeof addSourceFormSchema>) => void;
 };
 
 export function AddSourceForm({ onFormSubmit }: AddSourceFormProps) {
   const t = useTranslations("Sources.addDialog");
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
+  const form = useForm<z.infer<typeof addSourceFormSchema>>({
+    resolver: zodResolver(addSourceFormSchema),
     defaultValues: {
       name: "",
       url: "",
@@ -53,7 +53,7 @@ export function AddSourceForm({ onFormSubmit }: AddSourceFormProps) {
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
+  function onSubmit(values: z.infer<typeof addSourceFormSchema>) {
     onFormSubmit(values);
   }
 

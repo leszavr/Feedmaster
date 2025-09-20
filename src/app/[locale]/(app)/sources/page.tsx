@@ -17,6 +17,8 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import type { Source } from "@/lib/types";
+import { z } from "zod";
+import { addSourceFormSchema } from "@/components/sources/add-source-form";
 
 export default function SourcesPage() {
   const t = useTranslations("Sources");
@@ -33,12 +35,14 @@ export default function SourcesPage() {
     loadSources();
   });
 
-  const handleSourceAdded = (newSourceData: Omit<Source, "id" | "lastRun" | "status">) => {
+  const handleSourceAdded = (newSourceData: z.infer<typeof addSourceFormSchema>) => {
     const sourceToAdd: Source = {
       ...newSourceData,
       id: `source-${sources.length + 1}`,
       status: 'active',
       lastRun: new Date(),
+      keywords: newSourceData.keywords || '',
+      blacklist: newSourceData.blacklist || '',
     }
     console.log("New source added (mock):", sourceToAdd);
     setSources(prev => [...prev, sourceToAdd]);
