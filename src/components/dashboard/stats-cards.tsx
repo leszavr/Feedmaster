@@ -5,32 +5,48 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { ShieldCheck, Percent, Rss, Bot } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
+import { getBots, getPosts, getSources } from "@/lib/data";
 
-export function StatsCards() {
-  const t = useTranslations("Dashboard.stats");
+export async function StatsCards() {
+  const t = await getTranslations("Dashboard.stats");
+  const posts = await getPosts();
+  const sources = await getSources();
+  const bots = await getBots();
+
+  const moderatedCount = posts.filter(
+    (p) => p.status === "approved" || p.status === "rejected"
+  ).length;
+  const approvedCount = posts.filter((p) => p.status === "approved").length;
+  const approvalRate =
+    moderatedCount > 0 ? (approvedCount / moderatedCount) * 100 : 0;
+  const activeSourcesCount = sources.filter(
+    (s) => s.status === "active"
+  ).length;
+  const activeBotsCount = bots.filter((b) => b.status === "active").length;
+
   const stats = [
     {
       title: t("moderated"),
-      value: "1,250",
+      value: moderatedCount.toLocaleString(),
       icon: ShieldCheck,
       change: t("moderated_change"),
     },
     {
       title: t("approval_rate"),
-      value: "89.5%",
+      value: `${approvalRate.toFixed(1)}%`,
       icon: Percent,
       change: t("approval_rate_change"),
     },
     {
       title: t("active_sources"),
-      value: "12",
+      value: activeSourcesCount.toLocaleString(),
       icon: Rss,
       change: t("active_sources_change"),
     },
     {
       title: t("active_bots"),
-      value: "3",
+      value: activeBotsCount.toLocaleString(),
       icon: Bot,
       change: t("active_bots_change"),
     },

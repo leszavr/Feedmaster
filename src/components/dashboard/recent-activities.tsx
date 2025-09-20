@@ -1,4 +1,3 @@
-"use client";
 
 import {
   Card,
@@ -9,7 +8,7 @@ import {
 } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 
 const activities = [
   {
@@ -44,8 +43,8 @@ const activities = [
   },
 ];
 
-export function RecentActivities() {
-  const t = useTranslations("Dashboard.activity");
+export async function RecentActivities() {
+  const t = await getTranslations("Dashboard.activity");
 
   return (
     <Card>
