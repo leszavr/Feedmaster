@@ -33,9 +33,9 @@ export default function SourcesPage() {
     loadSources();
   });
 
-  const handleSourceAdded = (newSource: Omit<Source, "id" | "lastRun" | "status">) => {
+  const handleSourceAdded = (newSourceData: Omit<Source, "id" | "lastRun" | "status">) => {
     const sourceToAdd: Source = {
-      ...newSource,
+      ...newSourceData,
       id: `source-${sources.length + 1}`,
       status: 'active',
       lastRun: new Date(),
@@ -55,7 +55,7 @@ export default function SourcesPage() {
               {t("addButton")}
             </Button>
           </DialogTrigger>
-          <DialogContent>
+          <DialogContent className="sm:max-w-[480px]">
             <DialogHeader>
               <DialogTitle>{t("addDialog.title")}</DialogTitle>
             </DialogHeader>

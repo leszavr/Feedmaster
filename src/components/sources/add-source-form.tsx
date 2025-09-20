@@ -23,7 +23,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import type { Source } from "@/lib/types";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 
 const formSchema = z.object({
@@ -60,7 +59,7 @@ export function AddSourceForm({ onFormSubmit }: AddSourceFormProps) {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
         <FormField
           control={form.control}
           name="name"
@@ -157,7 +156,7 @@ export function AddSourceForm({ onFormSubmit }: AddSourceFormProps) {
           control={form.control}
           name="filterLogic"
           render={({ field }) => (
-            <FormItem className="space-y-3">
+            <FormItem className="space-y-2">
               <FormLabel>{t("filterLogicLabel")}</FormLabel>
               <FormControl>
                 <RadioGroup
@@ -195,7 +194,7 @@ export function AddSourceForm({ onFormSubmit }: AddSourceFormProps) {
             </FormItem>
           )}
         />
-        <div className="flex justify-end gap-2">
+        <div className="flex justify-end gap-2 pt-4">
           <Button type="submit">{t("submitButton")}</Button>
         </div>
       </form>
