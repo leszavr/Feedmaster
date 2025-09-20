@@ -1,0 +1,10 @@
+
+{
+  "Sidebar": {
+    "dashboard": "Dashboard",
+    "moderation": "Moderation",
+    "sources": "Sources",
+    "bots": "Bots",
+    "settings": "Settings"
+  }
+}

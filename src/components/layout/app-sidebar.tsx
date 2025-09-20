@@ -10,6 +10,7 @@ import {
   Settings,
   Waves,
 } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 import {
   Sidebar,
@@ -25,31 +26,32 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { mockUser } from "@/lib/data";
 
-const menuItems = [
-  {
-    href: "/dashboard",
-    icon: LayoutDashboard,
-    label: "Dashboard",
-  },
-  {
-    href: "/moderation",
-    icon: ShieldCheck,
-    label: "Moderation",
-  },
-  {
-    href: "/sources",
-    icon: Rss,
-    label: "Sources",
-  },
-  {
-    href: "/bots",
-    icon: Bot,
-    label: "Bots",
-  },
-];
-
 export function AppSidebar() {
   const pathname = usePathname();
+  const t = useTranslations('Sidebar');
+
+  const menuItems = [
+    {
+      href: "/dashboard",
+      icon: LayoutDashboard,
+      label: t('dashboard'),
+    },
+    {
+      href: "/moderation",
+      icon: ShieldCheck,
+      label: t('moderation'),
+    },
+    {
+      href: "/sources",
+      icon: Rss,
+      label: t('sources'),
+    },
+    {
+      href: "/bots",
+      icon: Bot,
+      label: t('bots'),
+    },
+  ];
 
   return (
     <Sidebar>
@@ -68,7 +70,7 @@ export function AppSidebar() {
               <SidebarMenuItem key={item.href}>
                 <Link href={item.href} legacyBehavior passHref>
                   <SidebarMenuButton
-                    isActive={pathname === item.href}
+                    isActive={pathname.endsWith(item.href)}
                     tooltip={item.label}
                   >
                     <item.icon />
@@ -102,7 +104,7 @@ export function AppSidebar() {
                 <SidebarMenuButton
                   variant="ghost"
                   className="ml-auto"
-                  tooltip="Settings"
+                  tooltip={t('settings')}
                 >
                   <Settings />
                 </SidebarMenuButton>
