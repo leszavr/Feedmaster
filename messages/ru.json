@@ -121,6 +121,39 @@
   "Bots": {
     "title": "Боты",
     "addButton": "Добавить бота",
-    "noBots": "Боты еще не настроены."
+    "noBots": "Боты еще не настроены.",
+    "table": {
+      "name": "Имя",
+      "channelId": "ID Канала",
+      "token": "Токен",
+      "status": "Статус",
+      "actions": "Действия",
+      "edit": "Редактировать",
+      "delete": "Удалить"
+    },
+    "addDialog": {
+      "title": "Добавить нового бота",
+      "nameLabel": "Имя бота",
+      "namePlaceholder": "Например, Marketing Bot",
+      "tokenLabel": "API Токен",
+      "tokenPlaceholder": "123456:ABC-DEF...",
+      "channelIdLabel": "ID Канала",
+      "channelIdPlaceholder": "Например, @my_channel или -100...",
+      "statusLabel": "Статус",
+      "statusActive": "Активен",
+      "statusInactive": "Неактивен",
+      "submitButton": "Добавить бота",
+      "cancelButton": "Отмена"
+    },
+    "editDialog": {
+      "title": "Редактировать бота",
+      "submitButton": "Сохранить изменения"
+    },
+    "deleteDialog": {
+      "title": "Вы уверены?",
+      "description": "Это действие навсегда удалит бота \"{name}\". Отменить это действие будет невозможно.",
+      "cancelButton": "Отмена",
+      "confirmButton": "Удалить"
+    }
   }
 }

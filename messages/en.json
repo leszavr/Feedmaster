@@ -121,6 +121,39 @@
   "Bots": {
     "title": "Bots",
     "addButton": "Add Bot",
-    "noBots": "No bots configured yet."
+    "noBots": "No bots configured yet.",
+    "table": {
+      "name": "Name",
+      "channelId": "Channel ID",
+      "token": "Token",
+      "status": "Status",
+      "actions": "Actions",
+      "edit": "Edit",
+      "delete": "Delete"
+    },
+    "addDialog": {
+      "title": "Add New Bot",
+      "nameLabel": "Bot Name",
+      "namePlaceholder": "e.g., Marketing Bot",
+      "tokenLabel": "API Token",
+      "tokenPlaceholder": "123456:ABC-DEF...",
+      "channelIdLabel": "Channel ID",
+      "channelIdPlaceholder": "e.g., @my_channel or -100...",
+      "statusLabel": "Status",
+      "statusActive": "Active",
+      "statusInactive": "Inactive",
+      "submitButton": "Add Bot",
+      "cancelButton": "Cancel"
+    },
+    "editDialog": {
+      "title": "Edit Bot",
+      "submitButton": "Save Changes"
+    },
+    "deleteDialog": {
+      "title": "Are you sure?",
+      "description": "This will permanently delete the bot \"{name}\". This action cannot be undone.",
+      "cancelButton": "Cancel",
+      "confirmButton": "Delete"
+    }
   }
 }

@@ -1,4 +1,4 @@
-import type { Post, User, Source } from './types';
+import type { Post, User, Source, Bot } from './types';
 
 export const mockUser: User = {
   name: 'Алексей',
@@ -67,7 +67,10 @@ const mockSources: Source[] = [
     url: 'https://habr.com/ru/rss/hubs/all/',
     keywords: 'ai, next.js, react',
     status: 'active',
-    lastRun: new Date(Date.now() - 10 * 60 * 1000), // 10 minutes ago
+    lastRun: new Date(Date.now() - 10 * 60 * 1000),
+    blacklist: '',
+    fetchInterval: 5,
+    filterLogic: 'OR',
   },
   {
     id: 'source-2',
@@ -76,7 +79,10 @@ const mockSources: Source[] = [
     url: 'https://nextjs.org/feed.xml',
     keywords: 'nextjs, release',
     status: 'active',
-    lastRun: new Date(Date.now() - 30 * 60 * 1000), // 30 minutes ago
+    lastRun: new Date(Date.now() - 30 * 60 * 1000),
+    blacklist: '',
+    fetchInterval: 15,
+    filterLogic: 'OR',
   },
   {
     id: 'source-3',
@@ -85,7 +91,34 @@ const mockSources: Source[] = [
     url: 'https://t.me/s/durov',
     keywords: 'telegram, feature',
     status: 'paused',
-    lastRun: new Date(Date.now() - 24 * 60 * 60 * 1000), // 1 day ago
+    lastRun: new Date(Date.now() - 24 * 60 * 60 * 1000),
+    blacklist: '',
+    fetchInterval: 60,
+    filterLogic: 'OR',
+  },
+];
+
+const mockBots: Bot[] = [
+  {
+    id: 'bot-1',
+    name: 'Marketing Bot',
+    token: '123456:ABC-DEF1234ghIkl-zyx57W2v1uT',
+    channelId: '@my_marketing_channel',
+    status: 'active',
+  },
+  {
+    id: 'bot-2',
+    name: 'News Bot',
+    token: '654321:ZYX-WVU6543srQpo-jih98fedCBA',
+    channelId: '@daily_news_feed',
+    status: 'inactive',
+  },
+  {
+    id: 'bot-3',
+    name: 'Dev Alerts Bot',
+    token: '789012:GHI-JKL7890mnOpq-rst12uvwXYZ',
+    channelId: '-1001234567890',
+    status: 'error',
   },
 ];
 
@@ -102,4 +135,11 @@ export async function getSources(): Promise<Source[]> {
   // Simulate network delay
   await new Promise(resolve => setTimeout(resolve, 500));
   return mockSources;
+}
+
+// Mock async function to get bots
+export async function getBots(): Promise<Bot[]> {
+  // Simulate network delay
+  await new Promise(resolve => setTimeout(resolve, 500));
+  return mockBots;
 }
