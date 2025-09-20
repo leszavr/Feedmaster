@@ -1,22 +1,14 @@
 import createMiddleware from 'next-intl/middleware';
-import {NextRequest} from 'next/server';
 
-export default async function middleware(request: NextRequest) {
-  // Your custom middleware logic goes here
+export default createMiddleware({
+  // A list of all locales that are supported
+  locales: ['en', 'ru'],
 
-  const handleI18nRouting = createMiddleware({
-    locales: ['en', 'ru'],
-    defaultLocale: 'ru',
-  });
-  const response = handleI18nRouting(request);
-
-  // Your custom middleware logic for after `next-intl` goes here
-
-  return response;
-}
-
+  // Used when no locale matches
+  defaultLocale: 'ru'
+});
 
 export const config = {
-  // Skip all paths that should not be internationalized
-  matcher: ['/((?!api|_next|.*\\..*).*)'],
+  // Match only internationalized pathnames
+  matcher: ['/', '/(ru|en)/:path*']
 };
