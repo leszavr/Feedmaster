@@ -67,7 +67,29 @@
   "Sources": {
     "title": "Источники",
     "addButton": "Добавить источник",
-    "noSources": "Источники еще не настроены."
+    "noSources": "Источники еще не настроены.",
+    "table": {
+      "name": "Название",
+      "type": "Тип",
+      "status": "Статус",
+      "url": "URL"
+    },
+    "addDialog": {
+      "title": "Добавить новый источник",
+      "nameLabel": "Название источника",
+      "namePlaceholder": "Например, Новости TechCrunch",
+      "typeLabel": "Тип источника",
+      "typePlaceholder": "Выберите тип",
+      "typeRss": "RSS",
+      "typeTelegram": "Telegram",
+      "typeWeb": "Web",
+      "urlLabel": "URL",
+      "urlPlaceholder": "https://example.com/feed.xml",
+      "keywordsLabel": "Ключевые слова",
+      "keywordsPlaceholder": "например, ai, nextjs, tech (через запятую)",
+      "submitButton": "Добавить источник",
+      "cancelButton": "Отмена"
+    }
   },
   "Bots": {
     "title": "Боты",

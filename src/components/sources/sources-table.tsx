@@ -8,20 +8,22 @@ import {
   TableCell,
 } from "@/components/ui/table";
 import { Badge } from "@/components/ui/badge";
+import { useTranslations } from "next-intl";
 
 type SourcesTableProps = {
   sources: Source[];
 };
 
 export function SourcesTable({ sources }: SourcesTableProps) {
+  const t = useTranslations("Sources.table");
   return (
     <Table>
       <TableHeader>
         <TableRow>
-          <TableHead>Название</TableHead>
-          <TableHead>Тип</TableHead>
-          <TableHead>Статус</TableHead>
-          <TableHead>URL</TableHead>
+          <TableHead>{t("name")}</TableHead>
+          <TableHead>{t("type")}</TableHead>
+          <TableHead>{t("status")}</TableHead>
+          <TableHead>{t("url")}</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>

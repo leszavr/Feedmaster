@@ -67,7 +67,29 @@
   "Sources": {
     "title": "Sources",
     "addButton": "Add Source",
-    "noSources": "No sources configured yet."
+    "noSources": "No sources configured yet.",
+    "table": {
+      "name": "Name",
+      "type": "Type",
+      "status": "Status",
+      "url": "URL"
+    },
+    "addDialog": {
+      "title": "Add New Source",
+      "nameLabel": "Source Name",
+      "namePlaceholder": "e.g., TechCrunch News",
+      "typeLabel": "Source Type",
+      "typePlaceholder": "Select a type",
+      "typeRss": "RSS",
+      "typeTelegram": "Telegram",
+      "typeWeb": "Web",
+      "urlLabel": "URL",
+      "urlPlaceholder": "https://example.com/feed.xml",
+      "keywordsLabel": "Keywords",
+      "keywordsPlaceholder": "e.g., ai, nextjs, tech (comma-separated)",
+      "submitButton": "Add Source",
+      "cancelButton": "Cancel"
+    }
   },
   "Bots": {
     "title": "Bots",
