@@ -1,7 +1,6 @@
 "use client";
 
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, Link } from "@/navigation";
 import {
   Bot,
   LayoutDashboard,
@@ -28,28 +27,28 @@ import { mockUser } from "@/lib/data";
 
 export function AppSidebar() {
   const pathname = usePathname();
-  const t = useTranslations('Sidebar');
+  const t = useTranslations("Sidebar");
 
   const menuItems = [
     {
       href: "/dashboard",
       icon: LayoutDashboard,
-      label: t('dashboard'),
+      label: t("dashboard"),
     },
     {
       href: "/moderation",
       icon: ShieldCheck,
-      label: t('moderation'),
+      label: t("moderation"),
     },
     {
       href: "/sources",
       icon: Rss,
-      label: t('sources'),
+      label: t("sources"),
     },
     {
       href: "/bots",
       icon: Bot,
-      label: t('bots'),
+      label: t("bots"),
     },
   ];
 
@@ -68,9 +67,9 @@ export function AppSidebar() {
           <SidebarMenu>
             {menuItems.map((item) => (
               <SidebarMenuItem key={item.href}>
-                <Link href={item.href}>
+                <Link href={item.href} className="w-full">
                   <SidebarMenuButton
-                    isActive={pathname.endsWith(item.href)}
+                    isActive={pathname === item.href}
                     tooltip={item.label}
                   >
                     <item.icon />
@@ -101,13 +100,13 @@ export function AppSidebar() {
               </p>
             </div>
             <Link href="/settings">
-                <SidebarMenuButton
-                  variant="ghost"
-                  className="ml-auto"
-                  tooltip={t('settings')}
-                >
-                  <Settings />
-                </SidebarMenuButton>
+              <SidebarMenuButton
+                variant="ghost"
+                className="ml-auto"
+                tooltip={t("settings")}
+              >
+                <Settings />
+              </SidebarMenuButton>
             </Link>
           </div>
         </SidebarGroup>
