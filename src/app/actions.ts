@@ -1,32 +1,22 @@
-"use server";
+'use server';
 
-import { summarizeContentForModeration } from "@/ai/flows/summarize-content-for-moderation";
-import { z } from "zod";
-import { revalidatePath } from "next/cache";
+import { revalidatePath } from 'next/cache';
 
-const PostStatusSchema = z.enum(["approved", "rejected"]);
-
+// Mock function to simulate AI summary generation
 export async function getSummary(content: string): Promise<string> {
-  // Adding a delay to simulate network latency for a better UX demo
-  await new Promise((resolve) => setTimeout(resolve, 1500));
-
-  try {
-    const result = await summarizeContentForModeration({ content });
-    return result.summary;
-  } catch (error) {
-    console.error("Error summarizing content:", error);
-    return "Failed to generate summary.";
-  }
+  // In a real app, this would call a Genkit flow
+  await new Promise(resolve => setTimeout(resolve, 1500));
+  return `This is an AI-generated summary of the content: "${content.substring(0, 50)}...". The summary highlights the key points and main ideas presented in the original text.`;
 }
 
-export async function updatePostStatus(
-  postId: string,
-  status: z.infer<typeof PostStatusSchema>
-) {
-  // In a real app, you'd update the database here.
-  // For this MVP, we just log the action and revalidate the path.
-  console.log(`Updating post ${postId} to status ${status}`);
-  await new Promise((resolve) => setTimeout(resolve, 500));
-  revalidatePath("/moderation");
-  return { success: true, message: `Post ${status}` };
+// Mock function to update post status
+export async function updatePostStatus(postId: string, status: 'approved' | 'rejected'): Promise<{ success: boolean, message: string }> {
+  console.log(`Updating post ${postId} to ${status}`);
+  await new Promise(resolve => setTimeout(resolve, 1000));
+  
+  // In a real app, you would update the data source here.
+  
+  revalidatePath('/moderation');
+  
+  return { success: true, message: `Post has been ${status}.` };
 }

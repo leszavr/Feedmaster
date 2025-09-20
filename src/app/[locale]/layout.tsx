@@ -1,8 +1,8 @@
 import type { ReactNode } from "react";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
-
 import { Toaster } from "@/components/ui/toaster";
+
 import "../globals.css";
 
 export default async function LocaleLayout({

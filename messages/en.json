@@ -1,5 +1,8 @@
-
 {
+  "HomePage": {
+    "title": "Welcome",
+    "subtitle": "This is a fresh start."
+  },
   "Sidebar": {
     "dashboard": "Dashboard",
     "moderation": "Moderation",

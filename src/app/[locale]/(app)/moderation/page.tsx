@@ -1,29 +1,23 @@
-import { mockPosts } from "@/lib/data";
-import type { Post } from "@/lib/types";
 import { PageHeader } from "@/components/page-header";
 import { ModerationCard } from "@/components/moderation/moderation-card";
-
-async function getPendingPosts(): Promise<Post[]> {
-  // In a real app, this would fetch from a database
-  return mockPosts.filter((p) => p.status === "pending");
-}
+import { getPosts } from "@/lib/data";
 
 export default async function ModerationPage() {
-  const posts = await getPendingPosts();
+  const posts = await getPosts();
+  const pendingPosts = posts.filter((post) => post.status === "pending");
 
   return (
-    <div className="space-y-6">
-      <PageHeader title="Moderation Queue" />
-      {posts.length > 0 ? (
-        <div className="space-y-4">
-          {posts.map((post) => (
+    <div className="flex flex-col gap-6">
+      <PageHeader title={`Pending Moderation (${pendingPosts.length})`} />
+      {pendingPosts.length > 0 ? (
+        <div className="grid gap-6 lg:grid-cols-2 xl:grid-cols-3">
+          {pendingPosts.map((post) => (
             <ModerationCard key={post.id} post={post} />
           ))}
         </div>
       ) : (
-        <div className="text-center py-16 border-2 border-dashed rounded-lg">
-            <h3 className="text-lg font-medium">All Clear!</h3>
-            <p className="text-muted-foreground">There are no posts pending moderation.</p>
+        <div className="flex items-center justify-center rounded-lg border border-dashed p-12 text-center">
+          <p className="text-muted-foreground">No posts are currently pending moderation.</p>
         </div>
       )}
     </div>

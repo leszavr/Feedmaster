@@ -1,7 +1,10 @@
-
 {
+  "HomePage": {
+    "title": "Добро пожаловать",
+    "subtitle": "Это новый старт."
+  },
   "Sidebar": {
-    "dashboard": "Дашборд",
+    "dashboard": "Панель",
     "moderation": "Модерация",
     "sources": "Источники",
     "bots": "Боты",
