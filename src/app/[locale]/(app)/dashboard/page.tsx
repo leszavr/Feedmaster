@@ -2,7 +2,7 @@ import { PageHeader } from "@/components/page-header";
 import { StatsCards } from "@/components/dashboard/stats-cards";
 import { PostsChart } from "@/components/dashboard/posts-chart";
 import { RecentActivities } from "@/components/dashboard/recent-activities";
-import { getBots, getPosts, getSources } from "@/lib/data";
+import { getPosts } from "@/lib/data";
 import { getTranslations } from "next-intl/server";
 
 export default async function DashboardPage() {
