@@ -48,7 +48,7 @@ export default function LoginPage() {
           <div className="bg-primary p-2 rounded-lg">
             <Waves className="w-8 h-8 text-primary-foreground" />
           </div>
-          <span className="text-3xl font-semibold">TeleMonBot</span>
+          <span className="text-3xl font-semibold">FeedMaster</span>
         </div>
       <Card className="w-full max-w-sm">
         <CardHeader className="text-center">

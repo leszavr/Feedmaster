@@ -1,4 +1,4 @@
-# **App Name**: TeleMonBot
+# **App Name**: FeedMaster
 
 ## Core Features:
 

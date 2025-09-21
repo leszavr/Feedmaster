@@ -19,10 +19,10 @@ export default async function LocaleLayout({
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>TeleMonBot</title>
+        <title>FeedMaster</title>
         <meta
           name="description"
-          content="Automated content monitoring and publishing for Telegram."
+          content="Advanced content management and automated publishing platform for Telegram channels."
         />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link

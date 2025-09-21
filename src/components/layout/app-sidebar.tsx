@@ -65,7 +65,7 @@ export function AppSidebar() {
           <div className="bg-primary p-2 rounded-lg">
             <Waves className="w-6 h-6 text-primary-foreground" />
           </div>
-          <span className="text-xl font-semibold">TeleMonBot</span>
+          <span className="text-xl font-semibold">FeedMaster</span>
         </div>
       </SidebarHeader>
       <SidebarContent>
