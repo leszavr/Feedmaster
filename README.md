@@ -2,6 +2,7 @@
 
 > **Advanced content management and automated publishing platform for Telegram channels**
 
+
 [![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)](https://github.com/leszavr/Feedmaster)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 [![Node.js](https://img.shields.io/badge/node.js-18+-green.svg)](https://nodejs.org/)
@@ -228,3 +229,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 [Website](https://feedmaster.io) • [Documentation](https://docs.feedmaster.io) • [Community](https://discord.gg/feedmaster)
 
 </div>
+
