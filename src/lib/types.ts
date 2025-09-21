@@ -1,10 +1,12 @@
 
+
 export type Bot = {
   id: string;
   name: string;
   token: string;
   channelId: string;
-  status: 'active' | 'inactive' | 'error';
+  status: 'active' | 'inactive' | 'error' | 'stopped';
+  lastScan?: Date | string;
 };
 
 export type Source = {
@@ -12,12 +14,13 @@ export type Source = {
   name: string;
   type: 'RSS' | 'Telegram' | 'Web';
   url: string;
+  botId: string;
   keywords: string;
   filterLogic: 'AND' | 'OR';
   blacklist: string;
   fetchInterval: number; // in minutes
   status: 'active' | 'paused';
-  lastRun: Date;
+  lastRun: Date | string;
 };
 
 export type Post = {
@@ -27,10 +30,11 @@ export type Post = {
   summary?: string;
   link: string;
   source: {
+    id: string;
     name: string;
     type: Source['type'];
   };
-  fetchedAt: Date;
+  fetchedAt: Date | string;
   status: 'pending' | 'approved' | 'rejected';
   keywords: string[];
 };
@@ -41,4 +45,15 @@ export type User = {
   email: string;
   avatar: string;
   role: 'admin' | 'moderator';
+  status: 'Active' | 'Suspended';
+  suspendedUntil?: Date | string | null;
+  suspensionReason?: string;
+}
+
+export type AuditLog = {
+    id: number;
+    user: string;
+    action: string;
+    bot?: string;
+    timestamp: Date;
 }

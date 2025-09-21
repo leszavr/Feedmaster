@@ -23,7 +23,7 @@ export const botFormSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters."),
   token: z.string().min(10, "Token seems too short."),
   channelId: z.string().min(4, "Channel ID must be at least 4 characters."),
-  status: z.enum(["active", "inactive", "error"]),
+  status: z.enum(["active", "inactive", "error", "stopped"]),
 });
 
 type BotFormProps = {

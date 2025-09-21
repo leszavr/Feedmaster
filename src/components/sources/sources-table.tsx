@@ -1,4 +1,5 @@
-import type { Source } from "@/lib/types";
+
+import type { Source, Bot } from "@/lib/types";
 import {
   Table,
   TableHeader,
@@ -20,18 +21,25 @@ import { useTranslations } from "next-intl";
 
 type SourcesTableProps = {
   sources: Source[];
+  bots: Bot[];
   onEdit: (source: Source) => void;
   onDelete: (source: Source) => void;
 };
 
-export function SourcesTable({ sources, onEdit, onDelete }: SourcesTableProps) {
+export function SourcesTable({ sources, bots, onEdit, onDelete }: SourcesTableProps) {
   const t = useTranslations("Sources.table");
+
+  const getBotName = (botId: string) => {
+    return bots.find(b => b.id === botId)?.name || 'N/A';
+  }
+
   return (
     <Table>
       <TableHeader>
         <TableRow>
           <TableHead>{t("name")}</TableHead>
           <TableHead>{t("type")}</TableHead>
+          <TableHead>{t("bot")}</TableHead>
           <TableHead>{t("status")}</TableHead>
           <TableHead>{t("url")}</TableHead>
           <TableHead className="text-right">{t("actions")}</TableHead>
@@ -46,6 +54,7 @@ export function SourcesTable({ sources, onEdit, onDelete }: SourcesTableProps) {
                 {source.type}
               </Badge>
             </TableCell>
+             <TableCell>{getBotName(source.botId)}</TableCell>
             <TableCell>
               <Badge
                 variant={source.status === "active" ? "default" : "destructive"}
@@ -58,7 +67,7 @@ export function SourcesTable({ sources, onEdit, onDelete }: SourcesTableProps) {
                 href={source.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-primary hover:underline"
+                className="text-primary hover:underline max-w-xs truncate block"
               >
                 {source.url}
               </a>

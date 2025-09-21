@@ -28,10 +28,11 @@ import { Skeleton } from "../ui/skeleton";
 import { useTranslations } from "next-intl";
 
 type ModerationCardProps = {
-  post: Post;
+  post: Omit<Post, 'fetchedAt'> & { fetchedAt: string };
+  onStatusUpdate?: () => void;
 };
 
-export function ModerationCard({ post }: ModerationCardProps) {
+export function ModerationCard({ post, onStatusUpdate }: ModerationCardProps) {
   const t = useTranslations("Moderation.card");
   const { toast } = useToast();
   const [summary, setSummary] = useState<string | null>(post.summary || null);
@@ -67,6 +68,8 @@ export function ModerationCard({ post }: ModerationCardProps) {
         title: t("toast.updateSuccess.title"),
         description: result.message,
       });
+      // Notify parent component to update the list
+      onStatusUpdate?.();
     } else {
         toast({
             title: t("toast.updateError.title"),
@@ -80,7 +83,7 @@ export function ModerationCard({ post }: ModerationCardProps) {
   }
 
   return (
-    <Card>
+    <Card className="flex flex-col">
       <CardHeader>
         <div className="flex justify-between items-start gap-4">
           <div>
@@ -95,8 +98,8 @@ export function ModerationCard({ post }: ModerationCardProps) {
           <Badge variant="secondary">{formattedTime}</Badge>
         </div>
       </CardHeader>
-      <CardContent className="space-y-4">
-        <p className="text-sm text-muted-foreground">{post.content}</p>
+      <CardContent className="space-y-4 flex-grow">
+        <p className="text-sm text-muted-foreground line-clamp-4">{post.content}</p>
         {summary || isSummarizing ? (
           <div className="p-4 bg-muted/50 rounded-lg space-y-2 border">
             <div className="flex items-center gap-2">

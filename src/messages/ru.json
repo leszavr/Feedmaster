@@ -24,8 +24,7 @@
     "settings": "Настройки",
     "subscription": "Подписка",
     "integrations": "Интеграции",
-    "system": "Система",
-    "admin": "Админ-панель"
+    "system": "Система"
   },
   "Breadcrumbs": {
     "home": "Главная"
@@ -407,116 +406,6 @@
         "timestamp": "Время",
         "message": "Сообщение"
       }
-    }
-  },
-  "Admin": {
-    "title": "Админ-панель",
-    "nav": {
-      "dashboard": "Панель",
-      "users": "Пользователи",
-      "subscriptions": "Подписки",
-      "auditLog": "Аудит",
-      "backToApp": "Вернуться в приложение"
-    },
-    "metrics": {
-      "mrr": "Ежемесячный доход (MRR)",
-      "dau": "Активные пользователи (DAU)",
-      "churn": "Коэффициент оттока",
-      "conversion": "Коэффициент конверсии"
-    },
-    "users": {
-      "title": "Управление пользователями",
-      "description": "Поиск, просмотр и управление всеми пользователями платформы.",
-      "exportButton": "Экспорт",
-      "table": {
-        "user": "Пользователь",
-        "email": "Email",
-        "plan": "Тариф",
-        "status": "Статус",
-        "registered": "Регистрация",
-        "actions": "Действия",
-        "edit": "Редактировать",
-        "suspend": "Приостановить",
-        "manageSuspension": "Управлять блокировкой",
-        "delete": "Удалить"
-      },
-      "filters": {
-        "search": "Поиск по email или имени...",
-        "filterButton": "Фильтр",
-        "plan": "Фильтр по тарифу",
-        "allPlans": "Все тарифы",
-        "status": "Фильтр по статусу",
-        "allStatuses": "Все статусы",
-        "active": "Активен",
-        "suspended": "Приостановлен"
-      },
-      "editDialog": {
-        "title": "Редактировать пользователя",
-        "description": "Измените данные для {name}.",
-        "nameLabel": "Полное имя",
-        "emailLabel": "Email",
-        "roleLabel": "Роль",
-        "rolePlaceholder": "Выберите роль",
-        "roleModerator": "Модератор",
-        "roleAdmin": "Админ",
-        "roleSuperAdmin": "Супер-админ",
-        "cancelButton": "Отмена",
-        "submitButton": "Сохранить"
-      },
-      "suspendDialog": {
-        "title": "Приостановить пользователя",
-        "description": "Вы уверены, что хотите приостановить {name}?",
-        "durationLabel": "Приостановить до",
-        "datePlaceholder": "Выберите дату",
-        "durationForever": "Приостановить навсегда",
-        "cancelButton": "Отмена",
-        "confirmButton": "Приостановить",
-        "removeSuspension": {
-          "title": "Управление блокировкой",
-          "description": "Пользователь {name} в настоящее время приостановлен.",
-          "suspendedUntil": "Блокировка до:",
-          "confirmButton": "Снять блокировку"
-        }
-      }
-    },
-    "audit": {
-      "title": "Журнал аудита",
-      "description": "Журнал важных действий, выполненных пользователями и администраторами.",
-      "searchPlaceholder": "Поиск по действию, пользователю или боту...",
-      "filterByUser": "Фильтр по пользователю",
-      "filterByBot": "Фильтр по боту",
-      "table": {
-        "user": "Пользователь",
-        "action": "Действие",
-        "bot": "Бот",
-        "timestamp": "Время"
-      }
-    },
-    "exportDialog": {
-        "title": "Экспорт данных",
-        "description": "Выберите критерии для данных, которые вы хотите экспортировать.",
-        "filterByUser": "Пользователь",
-        "userPlaceholder": "Выберите пользователя",
-        "allUsers": "Все пользователи",
-        "filterByBot": "Бот",
-        "botPlaceholder": "Выберите бота",
-        "allBots": "Все боты",
-        "dateRange": "Диапазон дат",
-        "exportFormat": "Формат экспорта",
-        "formatPlaceholder": "Выберите формат",
-        "formatCsv": ".csv",
-        "formatJson": ".json",
-        "formatXlsx": ".xlsx (скоро)",
-        "formatXml": ".xml (скоро)",
-        "cancelButton": "Отмена",
-        "confirmButton": "Экспорт"
-    },
-    "dataTable": {
-      "previous": "Назад",
-      "next": "Вперед",
-      "rowsPerPage": "Строк на странице",
-      "of": "из",
-      "page": "Страница"
     }
   }
 }

@@ -24,8 +24,7 @@
     "settings": "Settings",
     "subscription": "Subscription",
     "integrations": "Integrations",
-    "system": "System",
-    "admin": "Admin Panel"
+    "system": "System"
   },
   "Breadcrumbs": {
     "home": "Home"
@@ -407,116 +406,6 @@
         "timestamp": "Timestamp",
         "message": "Message"
       }
-    }
-  },
-  "Admin": {
-    "title": "Admin Panel",
-    "nav": {
-      "dashboard": "Dashboard",
-      "users": "Users",
-      "subscriptions": "Subscriptions",
-      "auditLog": "Audit Log",
-      "backToApp": "Back to App"
-    },
-    "metrics": {
-      "mrr": "Monthly Recurring Revenue",
-      "dau": "Daily Active Users",
-      "churn": "Churn Rate",
-      "conversion": "Conversion Rate"
-    },
-    "users": {
-      "title": "User Management",
-      "description": "Search, view, and manage all users on the platform.",
-      "exportButton": "Export",
-      "table": {
-        "user": "User",
-        "email": "Email",
-        "plan": "Plan",
-        "status": "Status",
-        "registered": "Registered",
-        "actions": "Actions",
-        "edit": "Edit",
-        "suspend": "Suspend",
-        "manageSuspension": "Manage Suspension",
-        "delete": "Delete"
-      },
-      "filters": {
-        "search": "Search by email or name...",
-        "filterButton": "Filter",
-        "plan": "Filter by plan",
-        "allPlans": "All Plans",
-        "status": "Filter by status",
-        "allStatuses": "All Statuses",
-        "active": "Active",
-        "suspended": "Suspended"
-      },
-      "editDialog": {
-        "title": "Edit User",
-        "description": "Modify the details for {name}.",
-        "nameLabel": "Full Name",
-        "emailLabel": "Email",
-        "roleLabel": "Role",
-        "rolePlaceholder": "Select a role",
-        "roleModerator": "Moderator",
-        "roleAdmin": "Admin",
-        "roleSuperAdmin": "Super Admin",
-        "cancelButton": "Cancel",
-        "submitButton": "Save Changes"
-      },
-      "suspendDialog": {
-        "title": "Suspend User",
-        "description": "Are you sure you want to suspend {name}?",
-        "durationLabel": "Suspend until",
-        "datePlaceholder": "Pick a date",
-        "durationForever": "Suspend indefinitely",
-        "cancelButton": "Cancel",
-        "confirmButton": "Suspend",
-        "removeSuspension": {
-          "title": "Manage Suspension",
-          "description": "User {name} is currently suspended.",
-          "suspendedUntil": "Suspended until:",
-          "confirmButton": "Remove Suspension"
-        }
-      }
-    },
-    "audit": {
-      "title": "Audit Log",
-      "description": "A log of important actions performed by users and admins.",
-      "searchPlaceholder": "Search logs by action, user, or bot...",
-      "filterByUser": "Filter by user",
-      "filterByBot": "Filter by bot",
-      "table": {
-        "user": "User",
-        "action": "Action",
-        "bot": "Bot",
-        "timestamp": "Timestamp"
-      }
-    },
-    "exportDialog": {
-      "title": "Export Data",
-      "description": "Select the criteria for the data you want to export.",
-      "filterByUser": "User",
-      "userPlaceholder": "Select a user",
-      "allUsers": "All Users",
-      "filterByBot": "Bot",
-      "botPlaceholder": "Select a bot",
-      "allBots": "All Bots",
-      "dateRange": "Date Range",
-      "exportFormat": "Export format",
-      "formatPlaceholder": "Select format",
-      "formatCsv": ".csv",
-      "formatJson": ".json",
-      "formatXlsx": ".xlsx (soon)",
-      "formatXml": ".xml (soon)",
-      "cancelButton": "Cancel",
-      "confirmButton": "Export"
-    },
-    "dataTable": {
-      "previous": "Previous",
-      "next": "Next",
-      "rowsPerPage": "Rows per page",
-      "of": "of",
-      "page": "Page"
     }
   }
 }

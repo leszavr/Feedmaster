@@ -1,3 +1,4 @@
+
 "use client";
 
 import { usePathname, Link } from "@/navigation";
@@ -9,6 +10,9 @@ import {
   Settings,
   Waves,
   Users,
+  CreditCard,
+  Puzzle,
+  Server,
 } from "lucide-react";
 import { useTranslations } from "next-intl";
 
@@ -24,11 +28,12 @@ import {
   SidebarSeparator,
 } from "@/components/ui/sidebar";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { mockUser } from "@/lib/data";
+import { useAuth } from "@/contexts/auth-context";
 
 export function AppSidebar() {
   const pathname = usePathname();
   const t = useTranslations("Sidebar");
+  const { user } = useAuth();
 
   const menuItems = [
     {
@@ -56,7 +61,25 @@ export function AppSidebar() {
       icon: Users,
       label: t("users"),
     },
+    {
+      href: "/integrations",
+      icon: Puzzle,
+      label: t("integrations"),
+    },
   ];
+
+  const secondaryMenuItems = [
+    {
+        href: "/subscription",
+        icon: CreditCard,
+        label: t("subscription"),
+    },
+    {
+        href: "/system",
+        icon: Server,
+        label: t("system"),
+    }
+  ]
 
   return (
     <Sidebar>
@@ -65,7 +88,7 @@ export function AppSidebar() {
           <div className="bg-primary p-2 rounded-lg">
             <Waves className="w-6 h-6 text-primary-foreground" />
           </div>
-          <span className="text-xl font-semibold">TeleMonBot</span>
+          <span className="text-xl font-semibold">FeedMaster</span>
         </div>
       </SidebarHeader>
       <SidebarContent>
@@ -86,6 +109,24 @@ export function AppSidebar() {
             ))}
           </SidebarMenu>
         </SidebarGroup>
+         <SidebarSeparator />
+         <SidebarGroup>
+            <SidebarMenu>
+                {secondaryMenuItems.map((item) => (
+                <SidebarMenuItem key={item.href}>
+                    <Link href={item.href} className="w-full">
+                    <SidebarMenuButton
+                        isActive={pathname.startsWith(item.href)}
+                        tooltip={item.label}
+                    >
+                        <item.icon />
+                        <span>{item.label}</span>
+                    </SidebarMenuButton>
+                    </Link>
+                </SidebarMenuItem>
+                ))}
+            </SidebarMenu>
+        </SidebarGroup>
       </SidebarContent>
       <SidebarFooter>
         <SidebarSeparator />
@@ -93,16 +134,16 @@ export function AppSidebar() {
           <div className="flex items-center gap-3 p-2">
             <Avatar className="h-10 w-10">
               <AvatarImage
-                src={mockUser.avatar}
-                alt={mockUser.name}
+                src={user?.photoURL || ''}
+                alt={user?.displayName || 'User'}
                 data-ai-hint="person portrait"
               />
-              <AvatarFallback>{mockUser.name.charAt(0)}</AvatarFallback>
+              <AvatarFallback>{user?.email?.charAt(0).toUpperCase() || 'U'}</AvatarFallback>
             </Avatar>
             <div className="overflow-hidden">
-              <p className="font-medium truncate">{mockUser.name}</p>
+              <p className="font-medium truncate">{user?.displayName || 'User'}</p>
               <p className="text-sm text-muted-foreground truncate">
-                {mockUser.email}
+                {user?.email}
               </p>
             </div>
             <Link href="/settings">

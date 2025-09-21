@@ -19,14 +19,17 @@ import { Badge } from "@/components/ui/badge";
 import { MoreHorizontal, Pencil, Trash2 } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { ObfuscatedToken } from "./obfuscated-token";
+import { formatDistanceToNow } from "date-fns";
+import { ru } from "date-fns/locale";
 
 type BotsTableProps = {
   bots: Bot[];
   onEdit: (bot: Bot) => void;
   onDelete: (bot: Bot) => void;
+  isSuspended?: boolean;
 };
 
-export function BotsTable({ bots, onEdit, onDelete }: BotsTableProps) {
+export function BotsTable({ bots, onEdit, onDelete, isSuspended = false }: BotsTableProps) {
   const t = useTranslations("Bots.table");
 
   const getStatusVariant = (status: Bot["status"]) => {
@@ -37,7 +40,17 @@ export function BotsTable({ bots, onEdit, onDelete }: BotsTableProps) {
         return "secondary";
       case "error":
         return "destructive";
+      case "stopped":
+        return "outline";
     }
+  };
+
+  const formatLastScan = (date?: Date | string) => {
+    if (!date) return "N/A";
+    return formatDistanceToNow(new Date(date), {
+      addSuffix: true,
+      locale: ru,
+    });
   };
 
   return (
@@ -47,6 +60,7 @@ export function BotsTable({ bots, onEdit, onDelete }: BotsTableProps) {
           <TableHead>{t("name")}</TableHead>
           <TableHead>{t("token")}</TableHead>
           <TableHead>{t("channelId")}</TableHead>
+          <TableHead>{t("lastScan")}</TableHead>
           <TableHead>{t("status")}</TableHead>
           <TableHead className="text-right">{t("actions")}</TableHead>
         </TableRow>
@@ -59,13 +73,14 @@ export function BotsTable({ bots, onEdit, onDelete }: BotsTableProps) {
               <ObfuscatedToken token={bot.token} />
             </TableCell>
             <TableCell>{bot.channelId}</TableCell>
+            <TableCell>{formatLastScan(bot.lastScan)}</TableCell>
             <TableCell>
               <Badge variant={getStatusVariant(bot.status)}>{bot.status}</Badge>
             </TableCell>
             <TableCell className="text-right">
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <Button variant="ghost" size="icon">
+                  <Button variant="ghost" size="icon" disabled={isSuspended}>
                     <MoreHorizontal className="h-4 w-4" />
                   </Button>
                 </DropdownMenuTrigger>

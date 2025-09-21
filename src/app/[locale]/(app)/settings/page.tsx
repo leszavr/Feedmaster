@@ -8,6 +8,7 @@ import { PageHeader } from "@/components/page-header";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { ProfileForm, profileFormSchema } from "@/components/settings/profile-form";
 import { PasswordForm, passwordFormSchema } from "@/components/settings/password-form";
+import { ApiKeysCard } from "@/components/settings/api-keys-card";
 import { useToast } from "@/hooks/use-toast";
 import { mockUser } from "@/lib/data";
 
@@ -58,6 +59,7 @@ export default function SettingsPage() {
           </CardContent>
         </Card>
       </div>
+      <ApiKeysCard />
     </div>
   );
 }

@@ -10,18 +10,19 @@ export default async function DashboardPage() {
   const posts = await getPosts();
 
   // Prepare data for the chart
-  const chartData = Array.from({ length: 7 }).map((_, i) => {
-    const d = new Date();
-    d.setDate(d.getDate() - i);
-    const date = d.toISOString().split("T")[0];
-    const dayPosts = posts.filter(
-      (p) => p.fetchedAt.toISOString().split("T")[0] === date
-    );
-    const approved = dayPosts.filter((p) => p.status === "approved").length;
-    const rejected = dayPosts.filter((p) => p.status === "rejected").length;
-    return { date, approved, rejected };
-  }).reverse();
-
+  const chartData = Array.from({ length: 7 })
+    .map((_, i) => {
+      const d = new Date();
+      d.setDate(d.getDate() - i);
+      const date = d.toISOString().split("T")[0];
+      const dayPosts = posts.filter(
+        (p) => new Date(p.fetchedAt).toISOString().split("T")[0] === date
+      );
+      const approved = dayPosts.filter((p) => p.status === "approved").length;
+      const rejected = dayPosts.filter((p) => p.status === "rejected").length;
+      return { date, approved, rejected };
+    })
+    .reverse();
 
   return (
     <div className="flex flex-col gap-6">

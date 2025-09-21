@@ -1,12 +1,12 @@
 
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useTranslations } from "next-intl";
 import { PageHeader } from "@/components/page-header";
 import { Button } from "@/components/ui/button";
 import { PlusCircle } from "lucide-react";
-import { getSources } from "@/lib/data";
+import { getSources, getBots } from "@/lib/data";
 import { SourcesTable } from "@/components/sources/sources-table";
 import { AddSourceForm } from "@/components/sources/add-source-form";
 import {
@@ -26,7 +26,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
-import type { Source } from "@/lib/types";
+import type { Source, Bot } from "@/lib/types";
 import { z } from "zod";
 import { addSourceFormSchema } from "@/components/sources/add-source-form";
 
@@ -35,17 +35,22 @@ export default function SourcesPage() {
   const tDialog = useTranslations("Sources.addDialog");
 
   const [sources, setSources] = useState<Source[]>([]);
+  const [bots, setBots] = useState<Bot[]>([]);
   const [isAddDialogOpen, setIsAddDialogOpen] = useState(false);
   const [editingSource, setEditingSource] = useState<Source | null>(null);
   const [deletingSource, setDeletingSource] = useState<Source | null>(null);
 
-  useState(() => {
-    async function loadSources() {
-      const fetchedSources = await getSources();
+  useEffect(() => {
+    async function loadData() {
+      const [fetchedSources, fetchedBots] = await Promise.all([
+        getSources(),
+        getBots(),
+      ]);
       setSources(fetchedSources);
+      setBots(fetchedBots);
     }
-    loadSources();
-  });
+    loadData();
+  }, []);
 
   const handleAddSource = (newSourceData: z.infer<typeof addSourceFormSchema>) => {
     const sourceToAdd: Source = {
@@ -106,7 +111,7 @@ export default function SourcesPage() {
             <DialogHeader>
               <DialogTitle>{t("addDialog.title")}</DialogTitle>
             </DialogHeader>
-            <AddSourceForm onFormSubmit={handleAddSource} />
+            <AddSourceForm onFormSubmit={handleAddSource} bots={bots} />
           </DialogContent>
         </Dialog>
       </PageHeader>
@@ -114,6 +119,7 @@ export default function SourcesPage() {
         <>
           <SourcesTable
             sources={sources}
+            bots={bots}
             onEdit={setEditingSource}
             onDelete={setDeletingSource}
           />
@@ -128,6 +134,7 @@ export default function SourcesPage() {
                   onFormSubmit={handleEditSource}
                   defaultValues={editingSource}
                   submitButtonText={t("editDialog.submitButton")}
+                  bots={bots}
                 />
               )}
             </DialogContent>

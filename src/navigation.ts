@@ -1,3 +1,4 @@
+
 import {
   createLocalizedPathnamesNavigation,
   Pathnames,
@@ -37,6 +38,22 @@ export const pathnames: Pathnames<typeof locales> = {
   '/settings': {
     en: '/settings',
     ru: '/settings',
+  },
+  '/subscription': {
+    en: '/subscription',
+    ru: '/subscription',
+  },
+  '/onboarding': {
+    en: '/onboarding',
+    ru: '/onboarding',
+  },
+  '/integrations': {
+    en: '/integrations',
+    ru: '/integrations',
+  },
+  '/system': {
+    en: '/system',
+    ru: '/system',
   },
 };
 

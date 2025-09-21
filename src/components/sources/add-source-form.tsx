@@ -24,11 +24,13 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import type { Bot } from "@/lib/types";
 
 export const addSourceFormSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters."),
   type: z.enum(["RSS", "Telegram", "Web"]),
   url: z.string().url("Please enter a valid URL."),
+  botId: z.string().min(1, "Please select a bot."),
   keywords: z.string().optional(),
   filterLogic: z.enum(["AND", "OR"]).default("OR"),
   blacklist: z.string().optional(),
@@ -39,15 +41,17 @@ type AddSourceFormProps = {
   onFormSubmit: (data: z.infer<typeof addSourceFormSchema>) => void;
   defaultValues?: Partial<z.infer<typeof addSourceFormSchema>>;
   submitButtonText?: string;
+  bots: Bot[];
 };
 
-export function AddSourceForm({ onFormSubmit, defaultValues, submitButtonText }: AddSourceFormProps) {
+export function AddSourceForm({ onFormSubmit, defaultValues, submitButtonText, bots }: AddSourceFormProps) {
   const t = useTranslations("Sources.addDialog");
   const form = useForm<z.infer<typeof addSourceFormSchema>>({
     resolver: zodResolver(addSourceFormSchema),
     defaultValues: defaultValues || {
       name: "",
       url: "",
+      botId: bots[0]?.id,
       keywords: "",
       filterLogic: "OR",
       blacklist: "",
@@ -105,6 +109,42 @@ export function AddSourceForm({ onFormSubmit, defaultValues, submitButtonText }:
           />
           <FormField
           control={form.control}
+          name="botId"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>{t("botLabel")}</FormLabel>
+              <Select onValueChange={field.onChange} defaultValue={field.value}>
+                <FormControl>
+                  <SelectTrigger>
+                    <SelectValue placeholder={t("botPlaceholder")} />
+                  </SelectTrigger>
+                </FormControl>
+                <SelectContent>
+                  {bots.map(bot => (
+                    <SelectItem key={bot.id} value={bot.id}>{bot.name}</SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        </div>
+        <FormField
+          control={form.control}
+          name="url"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>{t("urlLabel")}</FormLabel>
+              <FormControl>
+                <Input placeholder={t("urlPlaceholder")} {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+         <FormField
+          control={form.control}
           name="fetchInterval"
           render={({ field }) => (
             <FormItem>
@@ -124,20 +164,6 @@ export function AddSourceForm({ onFormSubmit, defaultValues, submitButtonText }:
                   <SelectItem value="360">{t("interval6hours")}</SelectItem>
                 </SelectContent>
               </Select>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        </div>
-        <FormField
-          control={form.control}
-          name="url"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>{t("urlLabel")}</FormLabel>
-              <FormControl>
-                <Input placeholder={t("urlPlaceholder")} {...field} />
-              </FormControl>
               <FormMessage />
             </FormItem>
           )}

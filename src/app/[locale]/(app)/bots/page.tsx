@@ -25,7 +25,6 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
-
 import { getBots } from "@/lib/data";
 import type { Bot } from "@/lib/types";
 import { BotsTable } from "@/components/bots/bots-table";
@@ -80,7 +79,7 @@ export default function BotsPage() {
   const onDeleteOpenChange = (open: boolean) => {
     if (!open) setDeletingBot(null);
   };
-
+  
   return (
     <div className="flex flex-col gap-6">
       <PageHeader title={t("title")}>

@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import { Toaster } from "@/components/ui/toaster";
+import { AuthProvider } from "@/contexts/auth-context";
 
 import "../globals.css";
 
@@ -19,7 +20,7 @@ export default async function LocaleLayout({
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>TeleMonBot</title>
+        <title>FeedMaster</title>
         <meta
           name="description"
           content="Automated content monitoring and publishing for Telegram."
@@ -37,8 +38,10 @@ export default async function LocaleLayout({
       </head>
       <body className="font-body antialiased">
         <NextIntlClientProvider locale={locale} messages={messages}>
-          {children}
-          <Toaster />
+          <AuthProvider>
+            {children}
+            <Toaster />
+          </AuthProvider>
         </NextIntlClientProvider>
       </body>
     </html>

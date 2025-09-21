@@ -1,20 +1,37 @@
 
+"use client";
+
 import type { ReactNode } from "react";
 import { SidebarProvider } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/layout/app-sidebar";
 import { Header } from "@/components/layout/header";
+import { PrivateRoute } from "@/components/auth/private-route";
+import { usePathname } from "next/navigation";
 
-// This is a private layout. It will require authentication.
-// We can add logic here to redirect unauthenticated users.
 
 export default function AppLayout({ children }: { children: ReactNode }) {
+  const pathname = usePathname();
+  
+  // Don't render the main app layout for the onboarding page
+  if (pathname.includes("/onboarding")) {
+    return (
+      <PrivateRoute>
+        <main>{children}</main>
+      </PrivateRoute>
+    );
+  }
+
   return (
-    <SidebarProvider>
-      <AppSidebar />
-      <div className="flex-1">
-        <Header />
-        <main className="p-4 md:p-6">{children}</main>
-      </div>
-    </SidebarProvider>
+    <PrivateRoute>
+      <SidebarProvider>
+        <AppSidebar />
+        <div className="flex-1">
+          <Header />
+          <main className="p-4 md:p-6">
+            {children}
+          </main>
+        </div>
+      </SidebarProvider>
+    </PrivateRoute>
   );
 }
