@@ -1,30 +1,31 @@
-# 🚀 FeedMaster
+# 🤖 FeedMaster - Intelligent Content Automation Platform
 
-> **Advanced content management and automated publishing platform for Telegram channels**
+[![Next.js](https://img.shields.io/badge/Next.js-15.3.3-black)](https://nextjs.org/)
+[![React](https://img.shields.io/badge/React-18.3.1-blue)](https://reactjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue)](https://www.typescriptlang.org/)
+[![TailwindCSS](https://img.shields.io/badge/TailwindCSS-3.4.1-38B2AC)](https://tailwindcss.com/)
 
+**FeedMaster** is an intelligent system for automated content collection, filtering, and publishing to Telegram channels. Built with modern web technologies and designed for scalability.
 
-[![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)](https://github.com/leszavr/Feedmaster)
-[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
-[![Node.js](https://img.shields.io/badge/node.js-18+-green.svg)](https://nodejs.org/)
-[![Next.js](https://img.shields.io/badge/Next.js-15-black.svg)](https://nextjs.org/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5-blue.svg)](https://www.typescriptlang.org/)
+## 🚀 Features
 
----
+### 🎯 Core Functionality
+- **Multi-source content aggregation**: RSS feeds, websites, Telegram channels, external APIs
+- **Advanced filtering**: Keywords, blacklists, NLP, semantic analysis
+- **Content moderation**: Manual review before publishing
+- **Bot management**: Multiple Telegram bots through unified interface
+- **Role-based access**: User, Moderator, Administrator, Owner roles
 
-## 📋 Overview
+### 📊 Admin Panel
+- **Dashboard**: Real-time analytics, user metrics, revenue tracking
+- **User Management**: 12,483+ users, subscription management, violation tracking
+- **Billing & Finance**: MRR ₽1,857,400, payment processing, revenue analytics
+- **System Monitoring**: Performance metrics, self-hosted instance management
 
-FeedMaster is a comprehensive platform designed to streamline content curation and automated publishing for Telegram channels. It combines intelligent content aggregation, AI-powered moderation, and seamless publishing workflows to help content creators and channel administrators manage their content efficiently.
-
-### ✨ Key Features
-
-- 🤖 **Bot Management**: Add and manage Telegram bots with API token validation
-- 📡 **Multi-Source Content**: RSS feeds, Telegram channels, and web sources integration  
-- 🔍 **Smart Filtering**: Advanced keyword filtering with AND/OR logic and blacklists
-- 🧠 **AI Integration**: Automated content summarization and quality assessment using Google Gemini
-- ✅ **Moderation Workflow**: Manual and automated content approval system
-- ⏰ **Scheduled Publishing**: Smart timing and batch publishing capabilities
-- 📊 **Analytics**: Comprehensive insights and performance metrics
-- 🌐 **Multi-language**: Built-in internationalization support
+### � Internationalization
+- **Primary**: Russian interface (default)
+- **Secondary**: English interface
+- **Localization**: Complete UI translation support
 
 ---
 

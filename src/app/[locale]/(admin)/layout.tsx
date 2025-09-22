@@ -6,6 +6,7 @@ import { Users, Settings, DollarSign, BarChart3, Home } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
+import LanguageSwitcher from "@/components/language-switcher";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -50,7 +51,7 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
     <QueryClientProvider client={queryClient}>
       <div className="flex h-screen bg-background">
         {/* Sidebar */}
-        <aside className="w-64 bg-card border-r border-border">
+        <aside className="relative w-64 bg-card border-r border-border">
           <div className="p-6">
             <h2 className="text-xl font-bold text-foreground">Admin Panel</h2>
             <p className="text-sm text-muted-foreground">FeedMaster</p>
@@ -78,6 +79,11 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
               );
             })}
           </nav>
+
+          {/* Language Switcher at bottom */}
+          <div className="absolute bottom-4 left-4">
+            <LanguageSwitcher />
+          </div>
         </aside>
 
         {/* Main content */}
