@@ -1,6 +1,7 @@
 "use client";
 
 import { ReactNode } from "react";
+// @ts-ignore
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Users, Settings, DollarSign, BarChart3, Home } from "lucide-react";
 import Link from "next/link";

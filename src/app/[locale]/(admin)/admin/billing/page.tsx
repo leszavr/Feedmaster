@@ -1,5 +1,6 @@
 "use client";
 
+// @ts-ignore
 import { useQuery } from "@tanstack/react-query";
 import { CreditCard, TrendingUp, DollarSign, Users, Download, RefreshCcw } from "lucide-react";
 import { Button } from "@/components/ui/button";

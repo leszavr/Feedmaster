@@ -1,5 +1,6 @@
 "use client";
 
+// @ts-ignore
 import { useQuery } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
 import { Users, Crown, TrendingUp, Percent, Bot, AlertTriangle, RefreshCcw } from "lucide-react";

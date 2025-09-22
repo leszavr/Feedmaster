@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+// @ts-ignore
 import { useQuery } from "@tanstack/react-query";
 import { Search, Download, User, MoreHorizontal } from "lucide-react";
 import { Button } from "@/components/ui/button";

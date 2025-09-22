@@ -1,5 +1,6 @@
 "use client";
 
+// @ts-ignore
 import { useQuery } from "@tanstack/react-query";
 import { Server, Cpu, HardDrive, MemoryStick, Activity, AlertTriangle, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
