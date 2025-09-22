@@ -14,7 +14,7 @@ export interface MessengerCredentials {
 
 export interface UnifiedMessage {
   text: string;
-  format?: 'markdown' | 'html' | 'plain';
+  format?: 'markdown' | 'html';
   attachments?: UnifiedAttachment[];
   keyboard?: UnifiedKeyboard;
   replyToMessageId?: string;

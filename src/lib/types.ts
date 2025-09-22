@@ -2,6 +2,9 @@
 
 import { MessengerPlatform } from './adapters';
 
+// Реэкспортируем для удобства
+export { MessengerPlatform } from './adapters';
+
 export type Bot = {
   id: string;
   name: string;

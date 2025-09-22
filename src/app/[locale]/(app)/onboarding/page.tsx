@@ -14,6 +14,7 @@ import { Badge } from "@/components/ui/badge";
 import { BotForm, botFormSchema } from "@/components/bots/bot-form";
 import { AddSourceForm, addSourceFormSchema } from "@/components/sources/add-source-form";
 import { useAuth } from "@/contexts/auth-context";
+import { MessengerPlatform } from "@/lib/types";
 
 export default function OnboardingPage() {
   const t = useTranslations("Onboarding");
@@ -29,7 +30,7 @@ export default function OnboardingPage() {
   ];
 
   // Mock bots for the source form dropdown
-  const mockBots = [{ id: 'temp-bot', name: 'My First Bot', token: '', channelId: '', status: 'active' as const }];
+  const mockBots = [{ id: 'temp-bot', name: 'My First Bot', token: '', channelId: '', status: 'active' as const, platform: MessengerPlatform.TELEGRAM }];
 
   const handleNext = () => {
     setCurrentStep((prev) => Math.min(prev + 1, steps.length - 1));
