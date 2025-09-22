@@ -1,0 +1,270 @@
+{
+  "dashboard": {
+    "stats": {
+      "totalUsers": 12483,
+      "activeSubscriptions": {
+        "pro": 2301,
+        "team": 429
+      },
+      "mrr": 1857400,
+      "churnRate": 3.2,
+      "botTraffic": 14.7,
+      "criticalIncidents": 2
+    },
+    "charts": {
+      "registrations": [
+        { "date": "1 мая", "free": 62, "pro": 25, "team": 5 },
+        { "date": "2 мая", "free": 59, "pro": 30, "team": 8 },
+        { "date": "3 мая", "free": 80, "pro": 28, "team": 6 },
+        { "date": "4 мая", "free": 81, "pro": 32, "team": 9 },
+        { "date": "5 мая", "free": 56, "pro": 29, "team": 7 },
+        { "date": "6 мая", "free": 55, "pro": 35, "team": 10 },
+        { "date": "7 мая", "free": 40, "pro": 33, "team": 8 }
+      ],
+      "mrrGrowth": [
+        { "month": "Апрель", "mrr": 1500000 },
+        { "month": "Май", "mrr": 1730000 },
+        { "month": "Июнь", "mrr": 1857400 }
+      ],
+      "violations": [
+        { "name": "Спам", "value": 45 },
+        { "name": "Мошенничество", "value": 30 },
+        { "name": "Авторские права", "value": 15 },
+        { "name": "Другое", "value": 10 }
+      ]
+    },
+    "alerts": [
+      {
+        "id": 1,
+        "type": "critical",
+        "message": "3 новых жалобы на бот @fake_news_bot (Tinkoff, Москва)",
+        "time": "14:30"
+      },
+      {
+        "id": 2,
+        "type": "warning",
+        "message": "Подписка истекает: 5 пользователей (Pro) в течение 7 дней",
+        "time": "14:25"
+      },
+      {
+        "id": 3,
+        "type": "success",
+        "message": "Новый enterprise-клиент: corp@company.ru (подписка: ₽120 000/год)",
+        "time": "14:20"
+      }
+    ]
+  },
+  "users": {
+    "users": [
+      {
+        "id": "1",
+        "name": "Алексей К.",
+        "email": "alex@example.com",
+        "role": "admin",
+        "plan": "pro",
+        "status": "suspended",
+        "lastLogin": "14.05.2025, 13:20",
+        "bots": { "current": 3, "limit": 3 },
+        "complaints": 12,
+        "avatar": "А"
+      },
+      {
+        "id": "2",
+        "name": "Мария С.",
+        "email": "maria@example.com",
+        "role": "user",
+        "plan": "free",
+        "status": "active",
+        "lastLogin": "15.05.2025, 09:15",
+        "bots": { "current": 1, "limit": 1 },
+        "complaints": 0,
+        "avatar": "М"
+      },
+      {
+        "id": "3",
+        "name": "Дмитрий Р.",
+        "email": "dmitry@example.com",
+        "role": "moderator",
+        "plan": "team",
+        "status": "active",
+        "lastLogin": "15.05.2025, 11:30",
+        "bots": { "current": 5, "limit": 10 },
+        "complaints": 2,
+        "avatar": "Д"
+      }
+    ],
+    "total": 12483
+  },
+  "bots": {
+    "bots": [
+      {
+        "id": "1",
+        "name": "@tech_news_daily",
+        "owner": "alex@example.com",
+        "channel": "-1001234567890",
+        "status": "active",
+        "frequency": "42 поста/час",
+        "sources": 12,
+        "lastCheck": "14:25"
+      },
+      {
+        "id": "2",
+        "name": "@crypto_updates",
+        "owner": "maria@example.com",
+        "channel": "-1001234567891",
+        "status": "suspended",
+        "frequency": "15 постов/час",
+        "sources": 8,
+        "lastCheck": "13:45"
+      },
+      {
+        "id": "3",
+        "name": "@news_aggregator",
+        "owner": "dmitry@example.com",
+        "channel": "-1001234567892",
+        "status": "error",
+        "frequency": "0 постов/час",
+        "sources": 5,
+        "lastCheck": "12:10"
+      }
+    ],
+    "total": 156
+  },
+  "activity": {
+    "events": [
+      {
+        "id": "1",
+        "time": "14:30",
+        "type": "ADMIN",
+        "level": "ERROR",
+        "message": "user@spammer.com заблокирован (причина: спам)",
+        "data": { "userId": "123", "reason": "spam", "adminId": "admin1" }
+      },
+      {
+        "id": "2",
+        "time": "14:25",
+        "type": "BOT",
+        "level": "WARN",
+        "message": "@news_spam_bot опубликовал 47 постов за 1 час",
+        "data": { "botId": "bot123", "postsCount": 47, "timeframe": "1hour" }
+      },
+      {
+        "id": "3",
+        "time": "14:20",
+        "type": "PAYMENT",
+        "level": "INFO",
+        "message": "Подписка продлена (ID: pay_123, сумма: ₽1 900)",
+        "data": { "paymentId": "pay_123", "amount": 1900, "currency": "RUB" }
+      }
+    ]
+  },
+  "billing": {
+    "stats": {
+      "mrr": 1857400,
+      "arr": 22288800,
+      "ltv": 45600,
+      "churnRate": 3.2
+    },
+    "revenueByCountry": [
+      { "country": "RU", "revenue": 1400000 },
+      { "country": "KZ", "revenue": 300000 },
+      { "country": "BY", "revenue": 157400 }
+    ],
+    "subscriptions": [
+      {
+        "id": "1",
+        "user": "alex@example.com",
+        "plan": "Pro",
+        "status": "active",
+        "paymentDate": "14.05.2025",
+        "amount": 1900,
+        "method": "СБП"
+      },
+      {
+        "id": "2",
+        "user": "maria@example.com",
+        "plan": "Team",
+        "status": "active",
+        "paymentDate": "13.05.2025",
+        "amount": 4900,
+        "method": "Карта"
+      }
+    ]
+  },
+  "system": {
+    "performance": {
+      "cpu": 42,
+      "ram": { "used": 3.2, "total": 8 },
+      "disk": 78,
+      "uptime": 99.98
+    },
+    "instances": [
+      {
+        "id": "1",
+        "host": "server.corp.ru",
+        "version": "v1.4.2",
+        "status": "active",
+        "lastCheckin": "14.05.2025 14:20",
+        "license": "LIC-XXXX-XXXX"
+      },
+      {
+        "id": "2",
+        "host": "85.12.34.56",
+        "version": "v1.3.1",
+        "status": "inactive",
+        "lastCheckin": "14.05.2025 10:10",
+        "license": "LIC-YYYY-YYYY"
+      }
+    ]
+  },
+  "support": {
+    "tickets": [
+      {
+        "id": "1",
+        "subject": "Не работает СБП",
+        "sender": "user@example.com",
+        "priority": "high",
+        "status": "new",
+        "date": "14.05",
+        "assignedTo": null
+      },
+      {
+        "id": "2",
+        "subject": "Обжалование блокировки",
+        "sender": "spammer@example.com",
+        "priority": "medium",
+        "status": "in_progress",
+        "date": "14.04",
+        "assignedTo": "support@feedmaster.ru"
+      }
+    ],
+    "stats": {
+      "total": 47,
+      "new": 8,
+      "inProgress": 15,
+      "resolved": 24
+    }
+  },
+  "settings": {
+    "maintenance": false,
+    "emailTemplates": {
+      "welcome": "Добро пожаловать в FeedMaster!",
+      "suspension": "Ваш аккаунт был приостановлен.",
+      "payment": "Спасибо за оплату подписки."
+    },
+    "apiKeys": [
+      {
+        "id": "1",
+        "name": "Admin API Key",
+        "key": "fm_admin_xxxxxxxxxxxxxxxxxx",
+        "created": "2024-05-14",
+        "lastUsed": "2024-05-15"
+      }
+    ],
+    "integrations": {
+      "telegramBot": "@feedmaster_admin_bot",
+      "sentry": "https://sentry.io/feedmaster",
+      "logRocket": "enabled"
+    }
+  }
+}
