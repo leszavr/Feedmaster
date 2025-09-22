@@ -1,5 +1,6 @@
 
 import type { Post, User, Source, Bot, AuditLog } from './types';
+import { MessengerPlatform } from './adapters';
 
 // This is the user that will be logged in by default.
 // In a real app, this would come from an auth provider.
@@ -32,34 +33,79 @@ const mockUsers: User[] = [
   },
 ]
 
-const mockBots: Bot[] = [
+  const mockBots: Bot[] = [
     {
       id: 'bot-1',
       name: 'Marketing Bot',
       token: '123456:ABC-DEF1234ghIkl-zyx57W2v1uT',
       channelId: '@my_marketing_channel',
+      platform: MessengerPlatform.TELEGRAM,
       status: 'active',
       lastScan: new Date(Date.now() - 5 * 60 * 1000), // 5 minutes ago
+      platformConfig: {
+        telegramSpecific: {
+          parseMode: 'HTML',
+          disableWebPagePreview: false,
+          disableNotification: false,
+        },
+      },
     },
     {
       id: 'bot-2',
       name: 'News Bot',
       token: '654321:ZYX-WVU6543srQpo-jih98fedCBA',
       channelId: '@daily_news_feed',
+      platform: MessengerPlatform.TELEGRAM,
       status: 'inactive',
       lastScan: new Date(Date.now() - 2 * 60 * 60 * 1000), // 2 hours ago
+      platformConfig: {
+        telegramSpecific: {
+          parseMode: 'Markdown',
+          disableWebPagePreview: true,
+          disableNotification: false,
+        },
+      },
     },
     {
       id: 'bot-3',
       name: 'Dev Alerts Bot',
       token: '789012:GHI-JKL7890mnOpq-rst12uvwXYZ',
       channelId: '-1001234567890',
+      platform: MessengerPlatform.TELEGRAM,
       status: 'error',
       lastScan: new Date(Date.now() - 24 * 60 * 60 * 1000), // yesterday
     },
-  ];
-
-const mockSources: Source[] = [
+    {
+      id: 'bot-4',
+      name: 'MAX Marketing Bot',
+      token: 'max_bot_token_abc123def456ghi789',
+      channelId: '123456789',
+      platform: MessengerPlatform.MAX,
+      status: 'active',
+      lastScan: new Date(Date.now() - 15 * 60 * 1000), // 15 minutes ago
+      platformConfig: {
+        maxSpecific: {
+          format: 'html',
+          notifications: true,
+        },
+      },
+    },
+    {
+      id: 'bot-5',
+      name: 'MAX News Feed',
+      token: 'max_bot_token_xyz987wvu654tsr321',
+      channelId: '987654321',
+      platform: MessengerPlatform.MAX,
+      status: 'inactive',
+      lastScan: new Date(Date.now() - 4 * 60 * 60 * 1000), // 4 hours ago
+      platformConfig: {
+        maxSpecific: {
+          format: 'markdown',
+          notifications: false,
+        },
+      },
+    },
+  ];const mockSources: Source[] = [
   {
     id: 'source-1',
     name: 'Habr',

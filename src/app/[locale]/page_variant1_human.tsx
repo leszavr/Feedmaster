@@ -19,34 +19,20 @@ import {
 
 export default function LandingPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-blue-25 to-indigo-50 relative overflow-hidden">
-      {/* Decorative Background Elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-purple-100 rounded-full opacity-20 blur-3xl"></div>
-        <div className="absolute top-1/2 -left-32 w-64 h-64 bg-blue-100 rounded-full opacity-30 blur-2xl"></div>
-        <div className="absolute bottom-20 right-1/4 w-48 h-48 bg-indigo-100 rounded-full opacity-25 blur-xl"></div>
-        <div className="absolute top-1/4 left-1/3 w-32 h-32 bg-purple-200 rounded-full opacity-15 blur-xl"></div>
-      </div>
-      
-      {/* Subtle Grid Pattern */}
-      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48cGF0dGVybiBpZD0iZ3JpZCIgd2lkdGg9IjQwIiBoZWlnaHQ9IjQwIiBwYXR0ZXJuVW5pdHM9InVzZXJTcGFjZU9uVXNlIj48cGF0aCBkPSJNIDQwIDAgTCAwIDAgMCA0MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZGRkZGZmIiBzdHJva2Utd2lkdGg9IjEiIG9wYWNpdHk9IjAuMyIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmlkKSIvPjwvc3ZnPg==')] opacity-20"></div>
-      
+    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-blue-50">
       {/* Header */}
-      <header className="border-b border-white/20 bg-white/60 backdrop-blur-md sticky top-0 z-50 relative">
+      <header className="border-b bg-white/80 backdrop-blur-sm sticky top-0 z-50">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
           <div className="flex items-center space-x-2">
-            <div className="relative">
-              <Bot className="h-8 w-8 text-purple-600" />
-              <div className="absolute -top-1 -right-1 w-3 h-3 bg-green-400 rounded-full border-2 border-white animate-pulse"></div>
-            </div>
-            <span className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent">FeedMaster</span>
+            <Bot className="h-8 w-8 text-purple-600" />
+            <span className="text-2xl font-bold text-gray-900">FeedMaster</span>
           </div>
           <div className="flex items-center space-x-4">
             <Link href="/login">
-              <Button variant="ghost" className="hover:bg-white/50">Войти</Button>
+              <Button variant="ghost">Войти</Button>
             </Link>
             <Link href="/login">
-              <Button className="bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 shadow-lg shadow-purple-500/25">
+              <Button className="bg-purple-600 hover:bg-purple-700">
                 Начать бесплатно
               </Button>
             </Link>
@@ -158,16 +144,15 @@ export default function LandingPage() {
       </section>
 
       {/* Problem Section */}
-      <section className="py-16 bg-gradient-to-br from-slate-50 via-gray-25 to-blue-25 relative">
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48cGF0dGVybiBpZD0iZG90cyIgd2lkdGg9IjYwIiBoZWlnaHQ9IjYwIiBwYXR0ZXJuVW5pdHM9InVzZXJTcGFjZU9uVXNlIj48Y2lyY2xlIGN4PSIzMCIgY3k9IjMwIiByPSIxLjUiIGZpbGw9IiNkZGRkZmYiIG9wYWNpdHk9IjAuNCIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNkb3RzKSIvPjwvc3ZnPg==')] opacity-30"></div>
-        <div className="container mx-auto px-4 relative z-10">
+      <section className="py-16 bg-gray-50">
+        <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center space-y-8">
             <h2 className="text-3xl font-bold text-gray-900">
               Знакомая ситуация? 🤔
             </h2>
             
             <div className="grid md:grid-cols-3 gap-6">
-              <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-xl border border-white/20 hover:shadow-2xl transition-all duration-300 hover:scale-105 border-l-4 border-red-400">
+              <div className="bg-white rounded-xl p-6 shadow-lg border-l-4 border-red-400">
                 <div className="text-4xl mb-4">😩</div>
                 <h3 className="font-semibold text-gray-900 mb-2">Каждый день одно и то же</h3>
                 <p className="text-gray-600 text-sm">
@@ -176,7 +161,7 @@ export default function LandingPage() {
                 </p>
               </div>
               
-              <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-xl border border-white/20 hover:shadow-2xl transition-all duration-300 hover:scale-105 border-l-4 border-orange-400">
+              <div className="bg-white rounded-xl p-6 shadow-lg border-l-4 border-orange-400">
                 <div className="text-4xl mb-4">⏰</div>
                 <h3 className="font-semibold text-gray-900 mb-2">Времени катастрофически не хватает</h3>
                 <p className="text-gray-600 text-sm">
@@ -185,7 +170,7 @@ export default function LandingPage() {
                 </p>
               </div>
               
-              <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-xl border border-white/20 hover:shadow-2xl transition-all duration-300 hover:scale-105 border-l-4 border-yellow-400">
+              <div className="bg-white rounded-xl p-6 shadow-lg border-l-4 border-yellow-400">
                 <div className="text-4xl mb-4">📉</div>
                 <h3 className="font-semibold text-gray-900 mb-2">Качество страдает</h3>
                 <p className="text-gray-600 text-sm">
@@ -317,12 +302,8 @@ export default function LandingPage() {
       </section>
 
       {/* Pricing Section */}
-      <section className="py-20 bg-gradient-to-br from-indigo-50 via-white to-purple-50 relative">
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-20 left-10 w-32 h-32 bg-gradient-to-br from-purple-100 to-indigo-100 rounded-full opacity-40 blur-xl"></div>
-          <div className="absolute bottom-20 right-10 w-40 h-40 bg-gradient-to-br from-blue-100 to-purple-100 rounded-full opacity-30 blur-2xl"></div>
-        </div>
-        <div className="container mx-auto px-4 relative z-10">
+      <section className="py-20 bg-gray-50">
+        <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">
               Начните бесплатно, масштабируйтесь по мере роста
@@ -334,7 +315,7 @@ export default function LandingPage() {
 
           <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
             {/* Free Plan */}
-            <Card className="border border-white/20 bg-white/60 backdrop-blur-md shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 relative">
+            <Card className="border-2 border-gray-200 relative">
               <CardHeader className="text-center pb-6">
                 <CardTitle className="text-2xl">Попробовать</CardTitle>
                 <div className="text-4xl font-bold text-gray-900">₽0</div>
@@ -368,9 +349,9 @@ export default function LandingPage() {
             </Card>
 
             {/* Pro Plan */}
-            <Card className="border-2 border-purple-300/50 bg-gradient-to-br from-white/80 to-purple-50/80 backdrop-blur-md shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-105 relative">
+            <Card className="border-2 border-purple-500 relative shadow-xl">
               <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
-                <Badge className="bg-gradient-to-r from-purple-500 to-indigo-500 text-white px-4 py-1 shadow-lg">🔥 Популярный</Badge>
+                <Badge className="bg-purple-500 text-white px-4 py-1">🔥 Популярный</Badge>
               </div>
               <CardHeader className="text-center pb-6">
                 <CardTitle className="text-2xl">Профессиональный</CardTitle>
@@ -409,7 +390,7 @@ export default function LandingPage() {
             </Card>
 
             {/* Enterprise Plan */}
-            <Card className="border border-white/20 bg-white/60 backdrop-blur-md shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105">
+            <Card className="border-2 border-gray-200">
               <CardHeader className="text-center pb-6">
                 <CardTitle className="text-2xl">Для агентств</CardTitle>
                 <div className="text-4xl font-bold text-gray-900">₽9,990</div>

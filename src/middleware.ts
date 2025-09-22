@@ -4,7 +4,7 @@ import { locales, localePrefix, pathnames } from './navigation';
 export default createMiddleware({
   defaultLocale: 'ru',
   locales,
-  localePrefix,
+  localePrefix: 'never',
   pathnames,
 });
 
@@ -15,10 +15,10 @@ export const config = {
 
     // Set a cookie to remember the previous locale for
     // all requests that have a locale prefix
-    '/(ru|en)/:path*',
+    '/(ru)/:path*',
 
     // Enable redirects that add a locale prefix
-    // (e.g. `/pathnames` -> `/en/pathnames`)
+    // (e.g. `/pathnames` -> `/ru/pathnames`)
     '/((?!_next|_vercel|.*\\..*).*)',
   ],
 };

@@ -1,12 +1,27 @@
 
 
+import { MessengerPlatform } from './adapters';
+
 export type Bot = {
   id: string;
   name: string;
   token: string;
   channelId: string;
+  platform: MessengerPlatform; // Новое поле для платформы
   status: 'active' | 'inactive' | 'error' | 'stopped';
   lastScan?: Date | string;
+  // Дополнительные настройки для разных платформ
+  platformConfig?: {
+    telegramSpecific?: {
+      parseMode?: 'HTML' | 'Markdown' | 'MarkdownV2';
+      disableWebPagePreview?: boolean;
+      disableNotification?: boolean;
+    };
+    maxSpecific?: {
+      format?: 'html' | 'markdown';
+      notifications?: boolean;
+    };
+  };
 };
 
 export type Source = {

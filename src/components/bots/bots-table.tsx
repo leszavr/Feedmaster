@@ -1,5 +1,6 @@
 
 import type { Bot } from "@/lib/types";
+import { MessengerPlatform } from "@/lib/adapters";
 import {
   Table,
   TableHeader,
@@ -16,7 +17,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { MoreHorizontal, Pencil, Trash2 } from "lucide-react";
+import { MoreHorizontal, Pencil, Trash2, MessageSquare, Zap } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { ObfuscatedToken } from "./obfuscated-token";
 import { formatDistanceToNow } from "date-fns";
@@ -45,6 +46,28 @@ export function BotsTable({ bots, onEdit, onDelete, isSuspended = false }: BotsT
     }
   };
 
+  const getPlatformIcon = (platform: MessengerPlatform) => {
+    switch (platform) {
+      case MessengerPlatform.TELEGRAM:
+        return <MessageSquare className="h-4 w-4 text-blue-600" />;
+      case MessengerPlatform.MAX:
+        return <Zap className="h-4 w-4 text-purple-600" />;
+      default:
+        return <MessageSquare className="h-4 w-4" />;
+    }
+  };
+
+  const getPlatformName = (platform: MessengerPlatform) => {
+    switch (platform) {
+      case MessengerPlatform.TELEGRAM:
+        return "Telegram";
+      case MessengerPlatform.MAX:
+        return "MAX";
+      default:
+        return platform;
+    }
+  };
+
   const formatLastScan = (date?: Date | string) => {
     if (!date) return "N/A";
     return formatDistanceToNow(new Date(date), {
@@ -58,6 +81,7 @@ export function BotsTable({ bots, onEdit, onDelete, isSuspended = false }: BotsT
       <TableHeader>
         <TableRow>
           <TableHead>{t("name")}</TableHead>
+          <TableHead>Платформа</TableHead>
           <TableHead>{t("token")}</TableHead>
           <TableHead>{t("channelId")}</TableHead>
           <TableHead>{t("lastScan")}</TableHead>
@@ -69,6 +93,12 @@ export function BotsTable({ bots, onEdit, onDelete, isSuspended = false }: BotsT
         {bots.map((bot) => (
           <TableRow key={bot.id}>
             <TableCell className="font-medium">{bot.name}</TableCell>
+            <TableCell>
+              <div className="flex items-center gap-2">
+                {getPlatformIcon(bot.platform)}
+                <span className="text-sm">{getPlatformName(bot.platform)}</span>
+              </div>
+            </TableCell>
             <TableCell>
               <ObfuscatedToken token={bot.token} />
             </TableCell>
